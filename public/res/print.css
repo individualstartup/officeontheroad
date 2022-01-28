@@ -1,0 +1,162 @@
+*
+{
+background: none;
+border: none;
+text-shadow: none !important;
+filter: none !important;
+-ms-filter: none !important;
+}
+
+body
+{
+background: rgb(255,255,255) !important;
+color: rgb(0,0,0) !important;
+margin: 0 !important;
+padding: 0 !important;
+position: relative;
+}
+
+address, blockquote, li, dd, dt
+{
+font: 10pt/130% sans-serif;
+}
+
+del, dfn, ins, kbd, samp, abbr, label, legend
+{
+font: 10pt sans-serif;
+}
+
+small, sub, sup
+{
+font: 8pt sans-serif;
+}
+
+h1
+{
+font: bold 12.5pt/130% sans-serif;
+}
+
+h2
+{
+font: bold 12pt/130% sans-serif;
+}
+
+h3
+{
+font: bold 11.5pt/130% sans-serif;
+}
+
+h4
+{
+font: bold 11pt/130% sans-serif;
+}
+
+h5
+{
+font: bold 10.5pt/130% sans-serif;
+}
+
+h6
+{
+font: bold 10pt/130% sans-serif;
+}
+
+hr
+{
+background: rgb(0,0,0);
+color: rgb(0,0,0);
+}
+
+p
+{
+font: 10pt/130% sans-serif;
+orphans: 2;
+widows: 2;
+}
+
+pre
+{
+font: 10pt/130% monospace;
+}
+
+b, strong
+{
+font: bold 10pt sans-serif;
+}
+
+cite, q, i, em
+{
+font: italic 10pt sans-serif;
+}
+
+code
+{
+font: 10pt monospace;
+}
+
+ol, ul
+{
+page-break-before: avoid;
+page-break-inside: avoid;
+}
+
+a, a:link, a:visited, a:active
+{
+color: rgb(0,0,0);
+}
+
+a:after
+{
+content: " {"attr(href)"}";
+}
+
+table
+{
+border-collapse: collapse;
+margin: 5pt 0 5pt 0;
+}
+
+tr
+{
+page-break-inside: avoid;
+}
+
+th, td
+{
+border: 1px solid rgb(0,0,0);
+color: rgb(0,0,0);
+font: 10pt/130% sans-serif;
+padding: 5pt;
+page-break-inside: avoid;
+text-align: left;
+vertical-align: top;
+}
+
+input:not([type='checkbox']):not([type='radio']), textarea, select
+{
+border: 0.5pt solid rgb(0,0,0);
+font: 10pt sans-serif;
+padding: 5pt;
+}
+
+input[type='button'], button[type='button'], input[type='reset'], button[type='reset'], input[type='submit'], button[type='submit']
+{
+border: 0.5pt solid rgb(0,0,0);
+font: bold 10pt sans-serif;
+padding: 5pt;
+}
+
+main::before
+{
+border-bottom: 1pt solid rgb(0,0,0);
+content: '\00A9  OFFICEONTHEROAD.CZ';
+display: block;
+font: bold italic 10pt/normal sans-serif;
+margin-bottom: 10pt;
+width: 100%;
+}
+
+header[role='banner'], footer[role='contentinfo'], div.slider, div.photogallery, div.about p.more, div.rental p.more, div.calendar, div.map, main div.contact > div > *:not(.contact-data)
+{
+display: none;
+}
