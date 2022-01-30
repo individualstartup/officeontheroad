@@ -87,8 +87,16 @@ const Box = styled.div`
   color: #333;
   text-align: center;
   position: absolute;
-  bottom: -190px;
+  left: 20px;
   max-width: 516px;
+
+  @media (max-width: 1024px) {
+    bottom: -190px;
+  }
+
+  @media (max-width: 500px) {
+    bottom: -270px;
+  }
 
   @media (min-width: 1024px) {
     padding: 2.6875rem 3.125rem 3.0625rem 3.125rem;

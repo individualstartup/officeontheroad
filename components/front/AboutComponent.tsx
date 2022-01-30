@@ -46,8 +46,11 @@ const AboutParagraph = styled.p`
 `;
 
 const About = styled.div`
-  margin-top: -20px;
   color: #888888;
+
+  @media (min-width: 1024px) {
+    margin-top: -20px;
+  }
 `;
 
 export default AboutComponent;

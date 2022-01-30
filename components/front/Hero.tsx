@@ -25,8 +25,15 @@ const Hero = styled.div`
   min-height: 470px;
   max-width: 2000px;
   background-position: right top;
-  margin-bottom: 250px;
   position: relative;
+
+  @media (max-width: 1024px) {
+    margin-bottom: 260px;
+  }
+
+  @media (max-width: 500px) {
+    margin-bottom: 320px;
+  }
 
   @media (min-width: 1024px) {
     background-position: center top;
