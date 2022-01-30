@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 interface ComponentProps {
   children: React.ReactNode;
+  id?: string;
 }
 
-const ContainerComponent: React.FC<ComponentProps> = ({ children }) => {
-  return <Container> {children}</Container>;
+const ContainerComponent: React.FC<ComponentProps> = ({ children, id }) => {
+  return <Container id={id}> {children}</Container>;
 };
 
 const Container = styled.div`

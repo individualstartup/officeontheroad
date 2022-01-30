@@ -8,9 +8,9 @@ const AboutComponent: React.FC<ComponentProps> = () => {
   return (
     <About>
       <ContainerComponent>
-        <AboutTitle>
+        {/*       <AboutTitle>
           <b>NOTIN</b> Malaga CF
-        </AboutTitle>
+        </AboutTitle>*/}
         <AboutParagraph>
           Pojízdný hotel je možná trochu nadnesený název, ale pro nás to tak opravdu je. Rozhodli jsme se více cestovat,
           ale protože "bez práce nejsou koláče", brzo vnikl koncept officeontheroad. Protože volna není nazbyt, zkusili

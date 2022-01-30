@@ -7,7 +7,7 @@ interface ComponentProps {}
 
 const EquipmentComponent: React.FC<ComponentProps> = () => {
   return (
-    <ContainerComponent>
+    <ContainerComponent id={'vybaveni-vozu'}>
       <Equipment>
         <EquipmentWrapper>
           <EquipmentTitle>
