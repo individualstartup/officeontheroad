@@ -12,17 +12,12 @@ const AboutComponent: React.FC<ComponentProps> = () => {
           <b>NOTIN</b> Malaga CF
         </AboutTitle>
         <AboutParagraph>
-          Obytný vůz NOTIN Malaga CF z řady polo-integrovaných automobilů Progress se řadí mezi luxusní vůz ve své třídě
-          jak zpracováním tak vybavením. Mezi jeho přednosti patří nástavba vyrobená patentovanou technologií NCIS kde
-          obkladové panely neobsahují dřevěnou konstrukci. Veškerá konstrukce nábytku je ručně vyráběna přímo ve fabrice
-          NOTIN kde je kladen důraz na francouzskou eleganci a detail.
+          Pojízdný hotel je možná trochu nadnesený název, ale pro nás to tak opravdu je. Rozhodli jsme se více cestovat,
+          ale protože "bez práce nejsou koláče", brzo vnikl koncept officeontheroad. Protože volna není nazbyt, zkusili
+          jsme přes den pracovat a ráno a odpoledne užívat neznámých míst.
         </AboutParagraph>
         <AboutParagraph>
-          Moderně vybavená koupelna s odděleným XXL sprchovým koutem a pohodlná ložnice se zašupovacími dveřmi a
-          královským lůžkem zaručí dostatek soukromí. Vůz je vybaven dostatečnou tepelnou izolací pro provoz i v zimních
-          podmínkách. Standardem je již vyhřívání odpadní nádrže. Kuchyň je vybavena ledničkou Dometic 153L a
-          dvou-plotýnkovím sporákem. Multifunkční polohovací stolek a lavice s uspořádáním Face to Face ze 100% kůže
-          zajistí dostatek pohodlí pro kempování.
+          Nemůžeme být na cestách pořád, rozhodli jsme se nabídnou tento pojízdný hotel i ostatním.
         </AboutParagraph>
       </ContainerComponent>
     </About>

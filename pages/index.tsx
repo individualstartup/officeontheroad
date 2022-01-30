@@ -23,7 +23,7 @@ export default function Home() {
         <ContainerComponent>
           <Hr />
         </ContainerComponent>
-        <RentalComponent />
+        {/* <RentalComponent />*/}
         <EquipmentComponent />
         <ConditionComponent />
         <ContactComponent />

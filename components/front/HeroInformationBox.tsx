@@ -10,7 +10,7 @@ const HeroInformationBoxComponent: React.FC<ComponentProps> = () => {
       <MobileWrapper>
         <Box>
           <BoxTitle>
-            <span>Obytný vůz</span> <span>NOTIN</span> <span> Malaga CF </span>
+            <span>Pojízdný </span> <span>Hotel</span> <span> plný zážitků </span>
             <span>s&nbsp;královským lůžkem</span>
           </BoxTitle>
           <More>
