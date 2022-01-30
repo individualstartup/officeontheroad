@@ -126,6 +126,7 @@ const ContactSocialUnorderedList = styled.ul`
 const ContactUnorderedListAdditionalInformation = styled.ul`
   margin-top: 40px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   @media (min-width: 1024px) {
