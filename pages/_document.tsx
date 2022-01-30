@@ -12,6 +12,13 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
             rel="stylesheet"
           />
+          <script
+            id="Cookiebot"
+            src="https://consent.cookiebot.com/uc.js"
+            data-cbid="145d900e-2578-4d80-8db0-8e96315583e2"
+            data-blockingmode="auto"
+            type="text/javascript"
+          ></script>
           <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2WSS62KZB"></script>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
@@ -223,6 +230,12 @@ display: none;
         <body>
           <Main />
           <NextScript />
+          <script
+            id="CookieDeclaration"
+            src="https://consent.cookiebot.com/145d900e-2578-4d80-8db0-8e96315583e2/cd.js"
+            type="text/javascript"
+            async
+          ></script>
         </body>
       </Html>
     );
