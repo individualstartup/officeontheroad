@@ -256,12 +256,12 @@ display: none;
         <body>
           <Main />
           <NextScript />
-          <script
+          {/*          <script
             id="CookieDeclaration"
             src="https://consent.cookiebot.com/145d900e-2578-4d80-8db0-8e96315583e2/cd.js"
             type="text/javascript"
             async
-          ></script>
+          ></script>*/}
         </body>
       </Html>
     );
