@@ -12,27 +12,27 @@ const NavigationComponent: React.FC<ComponentProps> = ({ open, setOpen }) => {
     <div>
       <Nav open={open}>
         <NavigationList>
-          <NavigationItem>
+          {/*          <NavigationItem>
             <a href="#o-vozu">O vozu</a>
-          </NavigationItem>
+          </NavigationItem>*/}
           <NavigationItem>
             <a href="#fotogalerie">Fotogalerie</a>
           </NavigationItem>
-          <NavigationItem>
+          {/*          <NavigationItem>
             <a href="#pujcovne">Půjčovné</a>
-          </NavigationItem>
-          <NavigationItem>
+          </NavigationItem>*/}
+          {/*          <NavigationItem>
             <a href="#kalendar">Kalendář</a>
-          </NavigationItem>
+          </NavigationItem>*/}
           <NavigationItem>
             <a href="#vybaveni-vozu">Vybavení vozu</a>
           </NavigationItem>
           <NavigationItem>
             <a href="#podminky">Podmínky</a>
           </NavigationItem>
-          <NavigationItem>
+          {/*          <NavigationItem>
             <a href="#vice-k-pronajmu">Více k pronájmu</a>
-          </NavigationItem>
+          </NavigationItem>*/}
           <NavigationItem>
             <a href="#kontakty">Kontakty</a>
           </NavigationItem>
