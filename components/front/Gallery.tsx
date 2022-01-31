@@ -36,7 +36,7 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
   };
 
   return (
-    <ContainerComponent>
+    <ContainerComponent id={'fotogalerie'}>
       <Gallery>
         <GalleryTitle>Fotogalerie</GalleryTitle>
         <GalleryInner>

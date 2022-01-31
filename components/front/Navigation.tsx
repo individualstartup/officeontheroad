@@ -12,27 +12,27 @@ const NavigationComponent: React.FC<ComponentProps> = ({ open, setOpen }) => {
     <div>
       <Nav open={open}>
         <NavigationList>
-          <NavigationItem>
+          {/*          <NavigationItem>
             <a href="#o-vozu">O vozu</a>
-          </NavigationItem>
+          </NavigationItem>*/}
           <NavigationItem>
             <a href="#fotogalerie">Fotogalerie</a>
           </NavigationItem>
-          <NavigationItem>
+          {/*          <NavigationItem>
             <a href="#pujcovne">Půjčovné</a>
-          </NavigationItem>
-          <NavigationItem>
+          </NavigationItem>*/}
+          {/*          <NavigationItem>
             <a href="#kalendar">Kalendář</a>
-          </NavigationItem>
+          </NavigationItem>*/}
           <NavigationItem>
             <a href="#vybaveni-vozu">Vybavení vozu</a>
           </NavigationItem>
           <NavigationItem>
             <a href="#podminky">Podmínky</a>
           </NavigationItem>
-          <NavigationItem>
+          {/*          <NavigationItem>
             <a href="#vice-k-pronajmu">Více k pronájmu</a>
-          </NavigationItem>
+          </NavigationItem>*/}
           <NavigationItem>
             <a href="#kontakty">Kontakty</a>
           </NavigationItem>
@@ -78,14 +78,14 @@ const NavigationList = styled.ol`
 `;
 
 const Nav = styled.nav`
-  @media (max-width: 1100px) {  
+  @media (max-width: 1100px) {
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(120%)')};
     height: 350px;
     padding: 1rem;
     position: absolute;
     right: 20px;
     transition: transform 0.3s ease-in-out;
-    top:85px;
+    top: 85px;
     background-color: rgb(3, 131, 163);
     display: flex;
     align-items: center;
@@ -97,7 +97,7 @@ const Nav = styled.nav`
     text-align: left;
 
     ::after {
-      content: " ";
+      content: ' ';
       position: absolute;
       top: -10px;
       right: 38px;

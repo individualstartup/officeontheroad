@@ -7,7 +7,7 @@ interface ComponentProps {}
 
 const EquipmentComponent: React.FC<ComponentProps> = () => {
   return (
-    <ContainerComponent>
+    <ContainerComponent id={'vybaveni-vozu'}>
       <Equipment>
         <EquipmentWrapper>
           <EquipmentTitle>
@@ -81,7 +81,7 @@ const EquipmentComponent: React.FC<ComponentProps> = () => {
             <EquipmentSpan>
               Zimní provoz
               <br />
-              <EquipmentBold>Nevím co</EquipmentBold>
+              <EquipmentBold>Pneu, řetězy, ...</EquipmentBold>
             </EquipmentSpan>
           </EquipmentParagraph>
         </EquipmentWrapper>

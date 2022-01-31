@@ -6,7 +6,7 @@ interface ComponentProps {}
 
 const ContactComponent: React.FC<ComponentProps> = () => {
   return (
-    <Contact>
+    <Contact id={'kontakty'}>
       <ContainerComponent>
         <ContactWrapper>
           <ContactFlexWrapper>
