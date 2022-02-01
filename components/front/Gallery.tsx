@@ -76,9 +76,6 @@ const GalleryImageList = styled.div`
       max-height: 100%;
       object-fit: contain;
     }
-    ul li button {
-      color: red !important;
-    }
   }
 `;
 
