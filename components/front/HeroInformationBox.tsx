@@ -14,7 +14,7 @@ const HeroInformationBoxComponent: React.FC<ComponentProps> = () => {
             <span>s&nbsp;královským lůžkem</span>
           </BoxTitle>
           <More>
-            <a href="#kalendar">Chci si pronajmout</a>
+            <a href="mailto:miloslav.vlach@gmail.com?subject=Pronajem obytnaku">Chci si pronajmout</a>
           </More>
         </Box>
       </MobileWrapper>

@@ -49,7 +49,7 @@ const EquipmentComponent: React.FC<ComponentProps> = () => {
             <EquipmentSpan>
               Převodovka
               <br />
-              <EquipmentBold>Manuální</EquipmentBold>
+              <EquipmentBold>Automatická</EquipmentBold>
             </EquipmentSpan>
           </EquipmentParagraph>
           <EquipmentParagraph>
@@ -93,7 +93,6 @@ const EquipmentComponent: React.FC<ComponentProps> = () => {
 
 const EquipmentTitle = styled.h2`
   display: block;
-  font-family: 700;
   width: 100%;
 `;
 
@@ -133,7 +132,7 @@ const EquipmentBold = styled.b`
 `;
 
 const Equipment = styled.div`
-  margin-top: 100px;
+  margin-top: 3rem;
 `;
 
 export default EquipmentComponent;

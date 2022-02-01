@@ -77,6 +77,7 @@ const ContactComponent: React.FC<ComponentProps> = () => {
 };
 
 const ContactWrapper = styled.div`
+  margin-top: 3rem;
   display: flex;
   margin-left: auto;
   margin-right: auto;

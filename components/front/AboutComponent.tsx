@@ -8,16 +8,17 @@ const AboutComponent: React.FC<ComponentProps> = () => {
   return (
     <About>
       <ContainerComponent>
-        {/*       <AboutTitle>
+        <AboutTitle>
           <b>NOTIN</b> Malaga CF
-        </AboutTitle>*/}
+        </AboutTitle>
         <AboutParagraph>
           Pojízdný hotel je možná trochu nadnesený název, ale pro nás to tak opravdu je. Rozhodli jsme se více cestovat,
           ale protože "bez práce nejsou koláče", brzo vnikl koncept officeontheroad. Protože volna není nazbyt, zkusili
           jsme přes den pracovat a ráno a odpoledne užívat neznámých míst.
         </AboutParagraph>
         <AboutParagraph>
-          Nemůžeme být na cestách pořád, rozhodli jsme se nabídnou tento pojízdný hotel i ostatním.
+          Nemůžeme být na cestách pořád, rozhodli jsme se nabídnou tento pojízdný hotel i ostatním. Nabízíme nejprve ve
+          své sociální bulblině a za velmi <b>zvýhodněnou cenu</b>.
         </AboutParagraph>
       </ContainerComponent>
     </About>

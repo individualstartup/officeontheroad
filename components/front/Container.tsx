@@ -14,7 +14,7 @@ const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  padding: 20px 20px;
+  padding: 0px 20px;
 `;
 
 export default ContainerComponent;

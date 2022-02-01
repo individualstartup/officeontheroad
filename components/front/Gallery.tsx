@@ -71,12 +71,13 @@ const GalleryImageList = styled.div`
     text-align: center;
     height: 400px;
 
-
-
     img {
       height: 400px;
       max-height: 100%;
       object-fit: contain;
+    }
+    ul li button {
+      color: red !important;
     }
   }
 `;
@@ -93,7 +94,7 @@ const GalleryTitle = styled.h2`
 `;
 
 const Gallery = styled.div`
-  margin: 100px auto;
+  margin: 3rem auto;
   width: 100%;
 `;
 

@@ -70,7 +70,7 @@ const Condition = styled.div`
   margin-right: auto;
   padding: 5.75rem 3.125rem 6.25rem 3.125rem;
   width: 100%;
-  margin-bottom: 100px;
+  margin-top: 3rem;
 `;
 const Icon = styled.img`
   margin-right: 10px;
