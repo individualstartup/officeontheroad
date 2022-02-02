@@ -36,7 +36,7 @@ const BoxTitle = styled.h1`
   line-height: 2.8125rem;
   text-align: left;
 
-  @media (min-width: 1024px) {  
+  @media (min-width: 1024px) {
     color: rgb(255, 255, 255);
   }
 
@@ -46,7 +46,7 @@ const BoxTitle = styled.h1`
     font-weight: 400;
     line-height: 1;
 
-    @media (min-width: 1024px) {  
+    @media (min-width: 1024px) {
       display: inline-block;
       font-size: 2.5rem;
     }
@@ -57,7 +57,7 @@ const BoxTitle = styled.h1`
     font-weight: 900;
     line-height: 1;
 
-    @media (min-width: 1024px) { 
+    @media (min-width: 1024px) {
       font-size: 6.25rem;
     }
   }
@@ -75,7 +75,7 @@ const BoxTitle = styled.h1`
     font-weight: 400;
     line-height: 1;
 
-    @media (min-width: 1024px) {  
+    @media (min-width: 1024px) {
       font-size: 1.875rem;
     }
   }
