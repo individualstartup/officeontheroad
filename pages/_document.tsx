@@ -45,17 +45,16 @@ export default class MyDocument extends Document {
             data-blockingmode="auto"
             type="text/javascript"
           ></script>
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-E2WSS62KZB"></script>
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-216505779-1" />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             dangerouslySetInnerHTML={{
               __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-E2WSS62KZB', {
-              page_path: window.location.pathname,
-            });
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'UA-216505779-1');
           `,
             }}
           />
