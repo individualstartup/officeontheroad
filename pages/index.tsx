@@ -8,27 +8,42 @@ import ContactComponent from '../components/front/Contact';
 import HeroComponent from 'components/front/Hero';
 import AboutComponent from 'components/front/AboutComponent';
 import ContainerComponent from 'components/front/Container';
+import Head from 'next/head';
 
 export default function Home() {
   return (
-    <Homepage>
-      <BannerComponent />
-      <Main>
-        <HeroComponent backgroundImage="url('/images/data/1_1.webp')" />
-        <AboutComponent />
-        <ContainerComponent>
-          <Hr />
-        </ContainerComponent>
-        <GalleryComponent />
-        <ContainerComponent>
-          <Hr />
-        </ContainerComponent>
-        {/* <RentalComponent />*/}
-        <EquipmentComponent />
-        <ConditionComponent />
-        <ContactComponent />
-      </Main>
-    </Homepage>
+    <>
+      <Head>
+        <title>OfficeOnTheRoad.cz - Pronájem obytného vozu</title>
+        <meta
+          name="description"
+          content="OfficeOnTheRoad.cz - Pronájem obytného vozu Praha. Obytňákem na lyže bežky nebo jen na výlety pěšky. Zaváděcí cena 1500 Kč."
+        />
+        <meta property="og:title" content="OfficeOnTheRoad.cz - Pronájem obytného vozu" />
+        <meta
+          property="og:description"
+          content="OfficeOnTheRoad.cz - Pronájem obytného vozu Praha. Obytňákem na lyže bežky nebo jen na výlety pěšky. Zaváděcí cena 1500 Kč."
+        />
+      </Head>
+      <Homepage>
+        <BannerComponent />
+        <Main>
+          <HeroComponent backgroundImage="url('/images/data/1_1.webp')" />
+          <AboutComponent />
+          <ContainerComponent>
+            <Hr />
+          </ContainerComponent>
+          <GalleryComponent />
+          <ContainerComponent>
+            <Hr />
+          </ContainerComponent>
+          {/* <RentalComponent />*/}
+          <EquipmentComponent />
+          <ConditionComponent />
+          <ContactComponent />
+        </Main>
+      </Homepage>
+    </>
   );
 }
 
