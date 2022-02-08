@@ -9,6 +9,9 @@ import HeroComponent from 'components/front/Hero';
 import AboutComponent from 'components/front/AboutComponent';
 import ContainerComponent from 'components/front/Container';
 import Head from 'next/head';
+import { Calendar } from 'primereact/calendar';
+import CalendarPrime from '../components/front/CalendarPrime';
+import CallendarComponent from '../components/front/Callendar';
 
 export default function Home() {
   return (
@@ -37,7 +40,10 @@ export default function Home() {
           <ContainerComponent>
             <Hr />
           </ContainerComponent>
-          {/* <RentalComponent />*/}
+          {/*<RentalComponent />*/}
+          {/*          <CalendarPrime />
+          <CallendarComponent />*/}
+          {/*<CalendarPrime />*/}
           <EquipmentComponent />
           <ConditionComponent />
           <ContactComponent />
