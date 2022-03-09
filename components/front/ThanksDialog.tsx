@@ -22,7 +22,7 @@ const ThanksDialog: React.FC<ComponentProps> = ({ onHide, visible }) => {
       <Dialog onHide={() => onHide()} visible={visible} blockScroll={true}>
         <DialogInner>
           <Heading>Děkujeme za rezervaci!</Heading>
-          <Paragraph>Váše rezervace se zpracovává a v mailu máte rekapitulaci.</Paragraph>
+          <Paragraph>Vaše rezervace se zpracovává a v mailu máte rekapitulaci.</Paragraph>
           <Icon src={'/icons/motorhome.svg'}></Icon>
           <Button label={'Zavřít'} onClick={(e) => onHide()} />
         </DialogInner>
