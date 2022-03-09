@@ -48,17 +48,17 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
         <GalleryInner>
           <GalleryImageList>
             <Slider {...settings}>
-              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_3929.jpeg?height=400px`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_3929.jpeg?height=400`} />
               <GalleryImage
                 alt=""
-                src={`${hostPrefix}/images/data/C2CC94FB-725E-4892-83B4-9FEAF3CB422A.JPG?height=400px`}
+                src={`${hostPrefix}/images/data/C2CC94FB-725E-4892-83B4-9FEAF3CB422A.JPG?height=400`}
               />
-              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_3980.jpeg?height=400px`} />
-              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4089.jpeg?height=400px`} />
-              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4093.jpeg?height=400px`} />
-              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4094.jpeg?height=400px`} />
-              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4179.jpeg?height=400px`} />
-              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4264.jpeg?height=400px`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_3980.jpeg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4089.jpeg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4093.jpeg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4094.jpeg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4179.jpeg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4264.jpeg?height=400`} />
               {/*              <GalleryImage alt="" src="/images/data/gal1.jpg" />
               <GalleryImage alt="" src="/images/data/gal2.jpg" />
               <GalleryImage alt="" src="/images/data/gal3.jpg" />
