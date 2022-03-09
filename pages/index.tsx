@@ -12,8 +12,14 @@ import Head from 'next/head';
 import { Calendar } from 'primereact/calendar';
 import CalendarPrime from '../components/front/CalendarPrime';
 import CallendarComponent from '../components/front/Callendar';
+import { useEffect } from 'react';
 
 export default function Home() {
+  useEffect(() => {
+    window.addEventListener('hashchange', function () {
+      window.scrollTo(window.scrollX, window.scrollY - 100);
+    });
+  }, []);
   return (
     <>
       <Head>
