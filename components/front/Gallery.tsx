@@ -53,12 +53,17 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
                 alt=""
                 src={`${hostPrefix}/images/data/C2CC94FB-725E-4892-83B4-9FEAF3CB422A.JPG?height=400`}
               />
+              <GalleryImage
+                alt=""
+                src={`${hostPrefix}/images/data/62E89C95-9F17-4C6E-867B-DCDA88DB664F.jpg?height=400`}
+              />
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_3980.jpeg?height=400`} />
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4089.jpeg?height=400`} />
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4093.jpeg?height=400`} />
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4094.jpeg?height=400`} />
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4179.jpeg?height=400`} />
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4264.jpeg?height=400`} />
+
               {/*              <GalleryImage alt="" src="/images/data/gal1.jpg" />
               <GalleryImage alt="" src="/images/data/gal2.jpg" />
               <GalleryImage alt="" src="/images/data/gal3.jpg" />
