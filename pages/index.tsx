@@ -26,12 +26,12 @@ export default function Home() {
         <title>OfficeOnTheRoad.cz - Pronájem obytného vozu</title>
         <meta
           name="description"
-          content="OfficeOnTheRoad.cz - Pronájem obytného vozu Praha. Obytňákem na lyže bežky nebo jen na výlety pěšky. Zaváděcí cena 1500 Kč."
+          content="OfficeOnTheRoad.cz - Pronájem obytného vozu Praha. Obytňákem na lyže bežky nebo jen na výlety pěšky."
         />
         <meta property="og:title" content="OfficeOnTheRoad.cz - Pronájem obytného vozu" />
         <meta
           property="og:description"
-          content="OfficeOnTheRoad.cz - Pronájem obytného vozu Praha. Obytňákem na lyže bežky nebo jen na výlety pěšky. Zaváděcí cena 1500 Kč."
+          content="OfficeOnTheRoad.cz - Pronájem obytného vozu Praha. Obytňákem na lyže bežky nebo jen na výlety pěšky."
         />
       </Head>
       <Homepage>

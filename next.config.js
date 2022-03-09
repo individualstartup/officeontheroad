@@ -9,6 +9,7 @@ const nextConfig = {
     FRONTEND_BE_HOST: process.env.FRONTEND_BE_HOST || 'https://pujcovna-be-pujcovna.os.shipvio.com',
     FRONT_URL: process.env.FRONT_URL || 'http://localhost:3000',
     FRONTENDSERVICE_PUBLIC_ENDPOINT: process.env.FRONTENDSERVICE_PUBLIC_ENDPOINT || '/services/frontend-service',
+    CDN_HOST: process.env.CDN_HOST || 'https://aqohqiyflq.cloudimg.io/www.officeontheroad.cz',
   },
 };
 

@@ -2,10 +2,13 @@ import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import ContainerComponent from './Container';
 import Slider from 'react-slick';
+import getConfig from 'next/config';
 
 interface ComponentProps {}
 
 const GalleryComponent: React.FC<ComponentProps> = () => {
+  const { publicRuntimeConfig } = getConfig();
+
   const settings = {
     dots: true,
     infinite: false,
@@ -36,6 +39,8 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
     ],
   };
 
+  const hostPrefix = publicRuntimeConfig.CDN_HOST;
+
   return (
     <ContainerComponent id={'fotogalerie'}>
       <Gallery>
@@ -43,13 +48,24 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
         <GalleryInner>
           <GalleryImageList>
             <Slider {...settings}>
-              <GalleryImage alt="" src="/images/data/gal1.jpg" />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_3929.jpeg?height=400px`} />
+              <GalleryImage
+                alt=""
+                src={`${hostPrefix}/images/data/C2CC94FB-725E-4892-83B4-9FEAF3CB422A.JPG?height=400px`}
+              />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_3980.jpeg?height=400px`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4089.jpeg?height=400px`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4093.jpeg?height=400px`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4094.jpeg?height=400px`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4179.jpeg?height=400px`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4264.jpeg?height=400px`} />
+              {/*              <GalleryImage alt="" src="/images/data/gal1.jpg" />
               <GalleryImage alt="" src="/images/data/gal2.jpg" />
               <GalleryImage alt="" src="/images/data/gal3.jpg" />
 
               <GalleryImage alt="" src="/images/data/gal4.jpg" />
               <GalleryImage alt="" src="/images/data/gal5.jpg" />
-              <GalleryImage alt="" src="/images/data/gal6.jpg" />
+              <GalleryImage alt="" src="/images/data/gal6.jpg" />*/}
             </Slider>
           </GalleryImageList>
         </GalleryInner>
@@ -79,7 +95,9 @@ const GalleryInner = styled.div`
   width: 100%;
 `;
 
-const GalleryImage = styled.img``;
+const GalleryImage = styled.img`
+  padding: 1rem;
+`;
 
 const GalleryTitle = styled.h2`
   font-weight: 700;
