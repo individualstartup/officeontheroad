@@ -19,11 +19,21 @@ export interface ResponseResult {
     payload?: any;
 }
 
+export interface ReservationInDTO {
+    fullName: string;
+    email: string;
+    phone: string;
+    since: string;
+    till: string;
+    totalPrice: number;
+}
+
 export interface ComputePriceOutDTO {
     totalPrice: number;
     since: string;
     till: string;
     prices: PriceElementOutDTO[];
+    serviceFee: number;
 }
 
 export interface PriceElementOutDTO {
@@ -40,6 +50,7 @@ export enum ErrorTypeEnum { ERROR='ERROR',VALIDATION='VALIDATION',CONFLICT='CONF
  
 
 export interface MicrositeApiType {
+    createResourceReservation: (resourceId: string,body: ReservationInDTO, onSuccess: (()=>void), hashAuthentication?: string, callbacks?: Callbacks) => void;
     computePrice: (resourceId: string,since: string,till: string, onSuccess: ((data : ComputePriceOutDTO)=>void), hashAuthentication?: string, callbacks?: Callbacks) => void;
   loading: string[];
 }
@@ -118,6 +129,57 @@ getIdTokenClaims: (options?: GetIdTokenClaimsOptions) => Promise<IdToken>,
     ): MicrositeApiType => {
 
   const apiMethods = {
+        createResourceReservation: (resourceId: string,body: ReservationInDTO, onSuccess: (()=>void), hashAuthentication: string = null, callbacks: Callbacks ={}):void => {
+        const slugs = router.query["slugs"];
+
+            console.log(`Sending post -> ${backendUrl}/public-api/${resourceId}/create-reservation, with data: ${JSON.stringify({body})}`);
+            setLoading([...loading, "createResourceReservation"]);
+            axios
+                .post(`${backendUrl}/public-api/${resourceId}/create-reservation`, body,  {
+                    headers: {
+                    'Accept-Language': i18n.language,
+        
+                    },
+                    params: resolveQueryParams([]),
+                })
+                .then((response) => {
+                    if (isSuccess(response)) {
+                        // @ts-ignore
+                        onSuccess(response.data.payload);
+                        }
+                    if (hasAdditionalAction(response)) {
+                        if (typeof callbacks.onAdditionalAction === 'function') {
+                            callbacks.onAdditionalAction(response.data.payload);
+                        }
+                    }
+
+                    if (isConflict(response)) {
+                        if (typeof callbacks.onConflict === 'function') {
+                            callbacks.onConflict(response.data.payload.entity);
+                        }
+                    }
+                    if (validationFailed(response)) {
+                        if (typeof callbacks.onValidationFailed === 'function') {
+                         callbacks.onValidationFailed(response.data.messages);
+                        }
+                    }
+
+                    if (entityNotFound(response)) {
+                        if (typeof callbacks.onEntityNotFound === 'function') {
+                            callbacks.onEntityNotFound(response.data.payload);
+                        }
+                    }
+                    setLoading(loading.filter(t=>t!== "createResourceReservation"));
+                })
+                .catch((error)=>{
+                    if (typeof callbacks.onError === 'function') {
+                        callbacks.onError(error);
+                    } else
+                    handleError(error, {body});
+                    setLoading(loading.filter(t=>t!== "createResourceReservation"));
+                })
+        
+        },
         computePrice: (resourceId: string,since: string,till: string, onSuccess: ((data : ComputePriceOutDTO)=>void), hashAuthentication: string = null, callbacks: Callbacks ={}):void => {
         const slugs = router.query["slugs"];
 

@@ -13,14 +13,16 @@ const AboutComponent: React.FC<ComponentProps> = () => {
         </AboutTitle>
         <Note>Model 2021</Note>
         <AboutParagraph>
-          Pojízdný hotel je možná trochu nadnesený název, ale pro nás to tak opravdu je. Rozhodli jsme se více cestovat,
-          ale protože "bez práce nejsou koláče", brzo vnikl koncept officeontheroad. Protože volna není nazbyt, zkusili
-          jsme přes den pracovat a ráno a odpoledne užívat neznámých míst.
+          Dovolená, kancl na cestách, útěk z reality… Pojďme si vytvořit nové vzpomínky a zažít něco jiného,
+          neobyčejného. Ráno si zaplavat v moři, vychutnat si snídani s výhledem na jezero, přes oběd jít na procházku
+          šumícím lesem a přitom být stále v pracovním procesu. To jsme si vybrali my, protože když už home office, proč
+          ne rovnou road office? Ale i nám se občas zasteskne po vaně a gauči a proto nabízíme tuhle možnost, být na
+          dovolené i v práci zároveň, i vám. A to je super, ne? 😀
         </AboutParagraph>
-        <AboutParagraph>
-          Nemůžeme být na cestách pořád, rozhodli jsme se nabídnou tento pojízdný hotel i ostatním. Nabízíme nejprve ve
-          své sociální bulblině a za velmi <b>zvýhodněnou cenu</b>.
-        </AboutParagraph>
+        {/*<AboutParagraph>*/}
+        {/*  Nemůžeme být na cestách pořád, rozhodli jsme se nabídnou tento pojízdný hotel i ostatním. Nabízíme nejprve ve*/}
+        {/*  své sociální bulblině a za velmi <b>zvýhodněnou cenu</b>.*/}
+        {/*</AboutParagraph>*/}
       </ContainerComponent>
     </About>
   );

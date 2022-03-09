@@ -32,16 +32,10 @@ const ContactComponent: React.FC<ComponentProps> = () => {
                 <ContactLink href="#pujcovne">Půjčovné</ContactLink>
               </ContactUnorderedListItem>
               <ContactUnorderedListItem>
-                <ContactLink href="#kalendar">Kalendář</ContactLink>
-              </ContactUnorderedListItem>
-              <ContactUnorderedListItem>
                 <ContactLink href="#vybaveni-vozu">Vybavení vozu</ContactLink>
               </ContactUnorderedListItem>
               <ContactUnorderedListItem>
                 <ContactLink href="#podminky">Podmínky</ContactLink>
-              </ContactUnorderedListItem>
-              <ContactUnorderedListItem>
-                <ContactLink href="#kontakty">Kontakty</ContactLink>
               </ContactUnorderedListItem>
             </ContactlinksUnorderedList>
 
@@ -60,14 +54,16 @@ const ContactComponent: React.FC<ComponentProps> = () => {
           </ContactFlexWrapper>
 
           <ContactUnorderedListAdditionalInformation>
-            <ContactUnorderedListAdditionalInformationItem>
+            {/*           <ContactUnorderedListAdditionalInformationItem>
               <ContactLink href="">GDPR</ContactLink>
             </ContactUnorderedListAdditionalInformationItem>
             <ContactUnorderedListAdditionalInformationItem>
               <ContactLink href="">Ochrana osobních údajů</ContactLink>
-            </ContactUnorderedListAdditionalInformationItem>
+            </ContactUnorderedListAdditionalInformationItem>*/}
             <ContactUnorderedListAdditionalInformationItem>
-              <ContactLink href="">Obchodní podmínky</ContactLink>
+              <ContactLink href="/data/obchodni-podminky.pdf" target={'_new'}>
+                Obchodní podmínky
+              </ContactLink>
             </ContactUnorderedListAdditionalInformationItem>
           </ContactUnorderedListAdditionalInformation>
         </ContactWrapper>
@@ -82,7 +78,6 @@ const ContactWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 2.8125rem 0.625rem 3.125rem 0.625rem;
-
   @media only screen and (max-width: 1024px) {
     flex-direction: column;
   }
@@ -129,7 +124,6 @@ const ContactUnorderedListAdditionalInformation = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
   @media (min-width: 1024px) {
     padding-left: 4.375rem;
     padding-right: 4.375rem;

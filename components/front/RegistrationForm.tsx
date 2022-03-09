@@ -4,16 +4,18 @@ import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Checkbox } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
-import React from 'react';
+import React, { useContext } from 'react';
 import { ComputePriceOutDTO } from '../../api/micrositeApi.v1';
 import { dayjsToShortDate, formatPrice, mapFromAPIDateTime } from '../../lib/formaters';
 import { useForm } from 'react-hook-form';
 import { useFormik } from 'formik';
+import { ApiContext } from '../../api/api';
 
 interface ComponentProps {
   visible: boolean;
   onHide: () => void;
   data: ComputePriceOutDTO;
+  onComplete: () => void;
 }
 
 interface FormData {
@@ -31,7 +33,7 @@ const initialValues: FormData = {
 };
 
 const validationSchema = yup.object().shape({
-  fullName: yup.string().required('Vyplnte prosim jmeno a prijmeni'),
+  fullName: yup.string().required('Vyplňte, prosím, jméno a příjmení'),
   phone: yup.string().required('Vyplňte prosím telefon'),
   email: yup.string().required('Vyplňte prosím e-mail').email('Vyplňte prosím e-mail'),
   acceptTaC: yup.mixed().test('true', 'Musíte souhlasit s obchodními podmínkami', (value, context) => {
@@ -39,12 +41,38 @@ const validationSchema = yup.object().shape({
   }) /*.required('Musíte souhlasit s obchodními podmínkami'),*/,
 });
 
-const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data }) => {
+const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data, onComplete }) => {
+  const { createResourceReservation } = useContext(ApiContext);
+  const resourceId = 'cf7e153d-9f1b-11ec-b75a-960000dc55d4';
+
   const sinceDayjs = mapFromAPIDateTime(data.since);
   const tillDayjs = mapFromAPIDateTime(data.till);
   const days = tillDayjs.diff(sinceDayjs, 'days') - 1;
 
-  const formik = useFormik<FormData>({ validationSchema, initialValues, onSubmit: () => {} });
+  const formik = useFormik<FormData>({
+    validationSchema,
+    initialValues,
+    onSubmit: (values) => {
+      createReservation(values);
+    },
+  });
+
+  const createReservation = (res: FormData) => {
+    createResourceReservation(
+      resourceId,
+      {
+        since: data.since,
+        email: res.email,
+        phone: res.phone,
+        till: data.till,
+        fullName: res.fullName,
+        totalPrice: data.totalPrice,
+      },
+      () => {
+        onComplete();
+      },
+    );
+  };
 
   return (
     <>
@@ -100,7 +128,11 @@ const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data }) =
                   checked={formik.values.acceptTaC}
                   onChange={(e) => formik.setFieldValue('acceptTaC', e.target.checked)}
                 />
-                <ChecboxLabel>Souhlasím s obchodními podmínkami</ChecboxLabel>
+                <ChecboxLabel>
+                  <a href="/data/obchodni-podminky.pdf" target={'_new'}>
+                    Souhlasím s obchodními podmínkami
+                  </a>
+                </ChecboxLabel>
               </CheckboxWrapper>
               {formik.touched.acceptTaC && <Error>{formik.errors.acceptTaC}</Error>}
               <CenteredRow>

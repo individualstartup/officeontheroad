@@ -10,6 +10,7 @@ import { isNotNullOrUndefined, isNullOrUndefined } from '../../lib/utils';
 import { Button } from 'primereact/button';
 import RegistrationForm from './RegistrationForm';
 import { formatPrice } from '../../lib/formaters';
+import ThanksDialog from './ThanksDialog';
 
 interface ComponentProps {
   backgroundImage: string;
@@ -27,6 +28,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
   const [validationError, setValidationError] = useState<string>();
   const resourceId = 'cf7e153d-9f1b-11ec-b75a-960000dc55d4';
   const [visibleOrder, setVisibleOrder] = useState(false);
+  const [visibleThanksDialog, setVisibleThanksDialog] = useState(false);
 
   useEffect(() => {
     if (isValid(form)) {
@@ -93,11 +95,11 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
                     />
                   </DateTo>
                 </DateForm>
-                {apiResponse?.totalPrice && (
+                {/*               {apiResponse?.totalPrice && (
                   <PriceNote>
                     {apiResponse.prices.map((t) => `${t.amount} x ${formatPrice(t.price, 'Kc')}`).join(', ')}
                   </PriceNote>
-                )}
+                )}*/}
                 {validationError && <Error>{validationError}</Error>}
               </Col>
               <Col>
@@ -107,7 +109,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
                     disabled={isNullOrUndefined(apiResponse)}
                     onClick={(e) => setVisibleOrder(true)}
                   ></Button>
-                  {apiResponse?.totalPrice && <Price>Cena {apiResponse?.totalPrice} Kc</Price>}
+                  {apiResponse?.totalPrice && <Price>{formatPrice(apiResponse?.totalPrice, 'Kč')}</Price>}
                 </ButtonAndPrice>
               </Col>
             </TwoCols>
@@ -120,8 +122,13 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
             onHide={() => {
               setVisibleOrder(false);
             }}
+            onComplete={() => {
+              setVisibleOrder(false);
+              setVisibleThanksDialog(true);
+            }}
           />
         )}
+        <ThanksDialog visible={visibleThanksDialog} onHide={() => setVisibleThanksDialog(false)} />
       </TwoCols>
     </>
   );
