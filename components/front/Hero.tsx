@@ -61,7 +61,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
         <Hero backgroundImage={backgroundImage}></Hero>
         <BookingFormInner>
           <Heading>Na běžky, na lyže, nebo do termálů...</Heading>
-          <Note>Zarezervujte si termin jeste dnes</Note>
+          <Note>Zarezervujte si termín ještě dnes</Note>
           <BookingForm>
             <TwoCols>
               <Col>
@@ -69,7 +69,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
                   <DateFrom>
                     <LabelWithIcon>
                       <CalendarIcon src={'/icons/datepicker.svg'}></CalendarIcon>
-                      <Label>Odjez</Label>
+                      <Label>Odjezd</Label>
                     </LabelWithIcon>
                     {/* <InputText style={{ width: '100%' }} />*/}
                     <Calendar
@@ -82,7 +82,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
                   <DateTo>
                     <LabelWithIcon>
                       <CalendarIcon src={'/icons/datepicker.svg'}></CalendarIcon>
-                      <Label>Odjez</Label>
+                      <Label>Příjezd</Label>
                     </LabelWithIcon>
                     {/*<InputText style={{ width: '100%' }} />*/}
                     <Calendar

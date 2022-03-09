@@ -65,14 +65,14 @@ const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data }) =
                 <Arrow src={'/icons/datepicker-arrow.svg'}></Arrow>
               </ArrowRow>
               <Col>
-                <InputLabel>Datum navratu</InputLabel>
+                <InputLabel>Datum návratu</InputLabel>
                 <Date>{dayjsToShortDate(mapFromAPIDateTime(data.till))}</Date>
               </Col>
             </TwoRows>
-            <Note>(jizda na {days} noci)</Note>
+            <Note>(jízda na {days} nocí)</Note>
             <InnerForm>
               <InputWrapper>
-                <InputLabel>jmeno a prijmeni: *</InputLabel>
+                <InputLabel>jméno a příjmení: *</InputLabel>
                 <InputText
                   value={formik.values.fullName}
                   onChange={(e) => formik.setFieldValue('fullName', e.target.value)}
@@ -100,11 +100,11 @@ const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data }) =
                   checked={formik.values.acceptTaC}
                   onChange={(e) => formik.setFieldValue('acceptTaC', e.target.checked)}
                 />
-                <ChecboxLabel>Souhlasim s obchodnimi podminkami</ChecboxLabel>
+                <ChecboxLabel>Souhlasím s obchodními podmínkami</ChecboxLabel>
               </CheckboxWrapper>
               {formik.touched.acceptTaC && <Error>{formik.errors.acceptTaC}</Error>}
               <CenteredRow>
-                <Price>Cena celkem {formatPrice(data.totalPrice, 'Kc')}</Price>
+                <Price>Cena celkem {formatPrice(data.totalPrice, 'Kč')}</Price>
                 <Button label={'Rezervovat'} type={'submit'}></Button>
               </CenteredRow>
             </InnerForm>

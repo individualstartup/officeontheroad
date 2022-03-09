@@ -11,6 +11,7 @@ const AboutComponent: React.FC<ComponentProps> = () => {
         <AboutTitle>
           <b>NOTIN</b> Malaga CF
         </AboutTitle>
+        <Note>Model 2021</Note>
         <AboutParagraph>
           Pojízdný hotel je možná trochu nadnesený název, ale pro nás to tak opravdu je. Rozhodli jsme se více cestovat,
           ale protože "bez práce nejsou koláče", brzo vnikl koncept officeontheroad. Protože volna není nazbyt, zkusili
@@ -25,13 +26,18 @@ const AboutComponent: React.FC<ComponentProps> = () => {
   );
 };
 
+const Note = styled.div`
+  display: flex;
+  margin-bottom: 1.125rem;
+`;
+
 const AboutTitle = styled.h2`
   color: rgb(51, 51, 51);
   font-family: Roboto, sans-serif;
   font-size: 40px;
   font-weight: 400;
   line-height: 1;
-  margin-bottom: 1.125rem;
+  margin-bottom: 0;
 `;
 
 const AboutParagraph = styled.p`
