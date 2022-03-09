@@ -17,7 +17,7 @@ const ConditionComponent: React.FC<ComponentProps> = () => {
         </ConditionParagraph>
         <ConditionParagraph>
           <Icon src="/images/svg/kauce.svg" />
-          <b>Zaváděcí cena na jeden den (první 3 zájemci)</b> <ConditionIconText>1 500,- Kč</ConditionIconText>
+          <b>Zaváděcí cena na jeden den</b> <ConditionIconText>2 490,- Kč</ConditionIconText>
         </ConditionParagraph>
         <ConditionParagraph>
           <Icon src="/images/svg/kauce.svg" />
