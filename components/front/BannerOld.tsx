@@ -40,9 +40,8 @@ const BannerInner = styled.div`
   max-width: 74.625rem;
 `;
 const Banner = styled.div`
-  color: #575e68;
-  background: rgba(245, 245, 245, 0.85);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+  color: rgb(255, 255, 255);
   font-family: Roboto, sans-serif;
   position: fixed;
   top: 0;

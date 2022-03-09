@@ -44,8 +44,8 @@ const NavigationComponent: React.FC<ComponentProps> = ({ open, setOpen }) => {
 };
 
 const NavigationItem = styled.li`
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: bold;
   list-style: none;
   text-transform: uppercase;
 
@@ -72,7 +72,7 @@ const NavigationList = styled.ol`
     }
   }
   a {
-    color: rgb(255, 255, 255);
+    color: #575e68;
     text-decoration: none;
   }
 `;
@@ -80,8 +80,7 @@ const NavigationList = styled.ol`
 const Nav = styled.nav`
   @media (max-width: 1100px) {
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(120%)')};
-    height: 350px;
-    padding: 1rem;
+    padding: 3rem 1rem;
     position: absolute;
     right: 20px;
     transition: transform 0.3s ease-in-out;
@@ -94,7 +93,9 @@ const Nav = styled.nav`
     max-width: 250px;
     text-align: center;
     border-radius: 20px;
-    text-align: left;
+    a {
+      color: white;
+    }
 
     ::after {
       content: ' ';

@@ -41,7 +41,7 @@ const Burger = styled.button`
     div {
       width: 2rem;
       height: 0.31rem;
-      background-color: ${({ open }) => (open ? 'rgb(3, 131, 163)' : '#effffa')};
+      background-color: ${({ open }) => (open ? 'rgb(3, 131, 163)' : 'black')};
       transition: all 0.3s linear;
       position: relative;
       transform-origin: 1px;

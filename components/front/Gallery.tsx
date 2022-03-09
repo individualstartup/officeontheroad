@@ -29,7 +29,8 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 1,
+          initialSlide: 0,
+          dots: true,
         },
       },
     ],
@@ -59,14 +60,9 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
 
 const GalleryImageList = styled.div`
   border-radius: 20px;
-
-  margin-right: 1px;
-  overflow: hidden;
   margin: 0 auto;
 
   .slick-slider {
-    object-fit: contain;
-
     margin: 0 auto;
     text-align: center;
     height: 400px;
@@ -80,7 +76,6 @@ const GalleryImageList = styled.div`
 `;
 
 const GalleryInner = styled.div`
-  overflow-x: auto;
   width: 100%;
 `;
 
