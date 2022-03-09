@@ -100,9 +100,7 @@ const GalleryInner = styled.div`
   width: 100%;
 `;
 
-const GalleryImage = styled.img`
-  padding: 1rem;
-`;
+const GalleryImage = styled.img``;
 
 const GalleryTitle = styled.h2`
   font-weight: 700;

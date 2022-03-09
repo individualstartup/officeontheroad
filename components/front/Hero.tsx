@@ -128,7 +128,14 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
             }}
           />
         )}
-        <ThanksDialog visible={visibleThanksDialog} onHide={() => setVisibleThanksDialog(false)} />
+        <ThanksDialog
+          visible={visibleThanksDialog}
+          onHide={() => {
+            setVisibleThanksDialog(false);
+            setForm({ since: null, till: null });
+            setApiResponse(null);
+          }}
+        />
       </TwoCols>
     </>
   );
