@@ -44,7 +44,7 @@ export default class MyDocument extends Document {
             data-blockingmode="auto"
             type="text/javascript"
           ></script>
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-216505779-1" />
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PKC0DRNWD"></script>
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             dangerouslySetInnerHTML={{
@@ -53,7 +53,7 @@ export default class MyDocument extends Document {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
             
-              gtag('config', 'UA-216505779-1');
+              gtag('config', 'G-3PKC0DRNWD');
           `,
             }}
           />
