@@ -48,6 +48,7 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
         <GalleryInner>
           <GalleryImageList>
             <Slider {...settings}>
+              <GalleryImage alt="Rozlozeni obytnaku" src={`${hostPrefix}/images/data/schema.png?height=400`} />
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_3929.jpeg?height=400`} />
               <GalleryImage
                 alt=""
