@@ -59,7 +59,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
 
   return (
     <>
-      <TwoCols>
+      <ImageAndForm>
         <Hero backgroundImage={backgroundImage}></Hero>
         <BookingFormInner>
           <Heading>Na běžky, na lyže, nebo do termálů...</Heading>
@@ -136,7 +136,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
             setApiResponse(null);
           }}
         />
-      </TwoCols>
+      </ImageAndForm>
     </>
   );
 };
@@ -168,16 +168,6 @@ const PriceNote = styled.div`
   span {
     margin-right: 0.3rem;
   }
-`;
-
-const Button2 = styled.a`
-  display: flex;
-  color: white;
-  background: #1a84a1;
-  border-radius: 4px;
-  justify-content: center;
-  padding: 0.5rem 0.5rem;
-  text-transform: uppercase;
 `;
 
 const ButtonAndPrice = styled.div`
@@ -244,9 +234,9 @@ const BookingForm = styled.div`
 
 const BookingFormInner = styled.div`
   display: flex;
-  margin-top: 100px;
   flex-direction: column;
   padding: 2rem 1rem;
+  width: 600px;
 
   @media (max-width: 800px) {
     margin-top: 0px;
@@ -261,6 +251,12 @@ const Heading = styled.div`
   font-size: 25px;
   line-height: 40px;
 `;
+
+const ImageAndForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 const TwoCols = styled.div`
   display: flex;
@@ -280,7 +276,6 @@ const Hero = styled.div`
   background-position: right top;
   width: 100%;
   position: relative;
-  min-height: 433px;
 
   @media (max-width: 800px) {
     background-image: ${({ backgroundImage }) => backgroundImage};

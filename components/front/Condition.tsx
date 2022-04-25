@@ -1,39 +1,44 @@
-import React, { useContext, useEffect } from 'react';
+import React, {useContext, useEffect} from 'react';
 import styled from 'styled-components';
 import ContainerComponent from './Container';
 
-interface ComponentProps {}
+interface ComponentProps {
+}
 
 const ConditionComponent: React.FC<ComponentProps> = () => {
-  return (
-    <ContainerComponent>
-      <Condition className="conditions" id="podminky">
-        <ConditionTitle>
-          <b>Podmínky</b>
-        </ConditionTitle>
-        <ConditionParagraph>
-          <Icon src="/images/svg/kauce.svg" />
-          <b>Vratná kauce</b> <ConditionIconText>30.000,- Kč</ConditionIconText>
-        </ConditionParagraph>
-        {/*        <ConditionParagraph>
-          <Icon src="/images/svg/kauce.svg" />
-          <b>Zaváděcí cena na jeden den</b> <ConditionIconText>2 490,- Kč</ConditionIconText>
-        </ConditionParagraph>*/}
-        <ConditionParagraph>
-          <Icon src="/images/svg/kauce.svg" />
-          <b>Servisní poplatek (na jedno půjčení)</b> <ConditionIconText>1 500,- Kč</ConditionIconText>
-        </ConditionParagraph>
-        <ConditionParagraph>
-          <Icon src="/images/svg/noci.svg" />
-          <b>Minimální počet nocí pronájmu</b> <ConditionIconText>3 noci</ConditionIconText>
-        </ConditionParagraph>
-        <ConditionParagraph>
-          <Icon src="/images/svg/kmlimit.svg" />
-          <b>Limit kilometrů za den</b> <ConditionIconText>300 km</ConditionIconText>
-        </ConditionParagraph>
-      </Condition>
-    </ContainerComponent>
-  );
+    return (
+        <ContainerComponent>
+            <Condition className="conditions" id="podminky">
+                <ConditionTitle>
+                    <b>Podmínky</b>
+                </ConditionTitle>
+                <ConditionParagraph>
+                    <Icon src="/images/svg/kauce.svg"/>
+                    <b>Vratná kauce</b> <ConditionIconText>30.000,- Kč</ConditionIconText>
+                </ConditionParagraph>
+                <ConditionParagraph>
+                    <Icon src="/images/svg/kauce.svg"/>
+                    <b>Cena na den</b> <ConditionIconText>2 490,- Kč</ConditionIconText>
+                </ConditionParagraph>
+                <ConditionParagraph>
+                    <Icon src="/images/svg/kauce.svg"/>
+                    <b>Elektrokolo k tomu na den</b> <ConditionIconText>600,- Kč</ConditionIconText>
+                </ConditionParagraph>
+                <ConditionParagraph>
+                    <Icon src="/images/svg/kauce.svg"/>
+                    <b>Servisní poplatek (na jedno půjčení)</b> <ConditionIconText>1 500,- Kč</ConditionIconText>
+                </ConditionParagraph>
+                <ConditionParagraph>
+                    <Icon src="/images/svg/noci.svg"/>
+                    <b>Minimální počet nocí pronájmu</b> <ConditionIconText>3 noci</ConditionIconText>
+                </ConditionParagraph>
+                <ConditionParagraph>
+                    <Icon src="/images/svg/kmlimit.svg"/>
+                    <b>Limit kilometrů za den</b> <ConditionIconText>bez limitu (nad 5 dní)</ConditionIconText>
+                </ConditionParagraph>
+            </Condition>
+        </ContainerComponent>
+    );
 };
 
 const ConditionTitle = styled.h2`
@@ -68,7 +73,7 @@ const Condition = styled.div`
   box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
-  padding: 5.75rem 3.125rem 6.25rem 3.125rem;
+  padding: 3rem 3.125rem 3.0rem 3.125rem;
   width: 100%;
   margin-top: 3rem;
 `;

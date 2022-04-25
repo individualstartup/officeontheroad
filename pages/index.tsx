@@ -37,7 +37,6 @@ export default function Home() {
       <Homepage>
         <BannerComponent />
         <Main>
-          <HeroComponent backgroundImage="url('/images/data/1_1.webp')" />
           <AboutComponent />
           <ContainerComponent>
             <Hr />
