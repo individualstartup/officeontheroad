@@ -83,6 +83,8 @@ const RegistrationForm: React.FC<ComponentProps> = ({onHide, visible, data, onCo
                 totalPrice: data.totalPrice,
             },
             () => {
+                // @ts-ignore
+                window.gtag("event","created_reservation", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), price: d.totalPrice});
                 onComplete();
             },
         );
