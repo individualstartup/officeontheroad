@@ -65,13 +65,6 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4179.jpeg?height=400`} />
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4264.jpeg?height=400`} />
 
-              {/*              <GalleryImage alt="" src="/images/data/gal1.jpg" />
-              <GalleryImage alt="" src="/images/data/gal2.jpg" />
-              <GalleryImage alt="" src="/images/data/gal3.jpg" />
-
-              <GalleryImage alt="" src="/images/data/gal4.jpg" />
-              <GalleryImage alt="" src="/images/data/gal5.jpg" />
-              <GalleryImage alt="" src="/images/data/gal6.jpg" />*/}
             </Slider>
           </GalleryImageList>
         </GalleryInner>
@@ -88,11 +81,16 @@ const GalleryImageList = styled.div`
     margin: 0 auto;
     text-align: center;
     height: 400px;
+    
 
     img {
       height: 400px;
       max-height: 100%;
       object-fit: contain;
+    }
+    
+    ul.slick-dots {
+      display: flex;
     }
   }
 `;

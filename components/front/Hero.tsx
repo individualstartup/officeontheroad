@@ -32,6 +32,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
 
   useEffect(() => {
     if (isValid(form)) {
+
       setValidationError(null);
       setApiResponse(null);
       computePrice(
@@ -39,12 +40,16 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
         form.since.toISOString(),
         form.till.toISOString(),
         (d) => {
+          // @ts-ignore
+          gtag("event","check_price", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), price: d.totalPrice});
           setApiResponse(d);
         },
         null,
         {
           onValidationFailed: (originalResponse) => {
             console.log(JSON.stringify(originalResponse));
+            // @ts-ignore
+            gtag("event","check_price_error", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), error: originalResponse.map((t) => t.message).join(', ')});
             setValidationError(originalResponse.map((t) => t.message).join(', '));
           },
         },
