@@ -37,12 +37,15 @@ const ReservationForm: React.FC<ComponentProps> = () => {
                 dayjs(form.since).format(`YYYY-MM-DD`),
                 dayjs(form.till).format(`YYYY-MM-DD`),
                 (d) => {
+                    // @ts-ignore
+                    window.gtag("event","check_price", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), price: d.totalPrice});
                     setApiResponse(d);
                 },
                 null,
                 {
                     onValidationFailed: (originalResponse) => {
-                        console.log(JSON.stringify(originalResponse));
+                        // @ts-ignore
+                        window.gtag("event","check_price_error", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), error: originalResponse.map((t) => t.message).join(', ')});
                         setValidationError(originalResponse.map((t) => t.message).join(', '));
                     },
                 },

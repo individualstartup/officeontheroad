@@ -4,7 +4,7 @@ import {Dialog} from 'primereact/dialog';
 import {InputText} from 'primereact/inputtext';
 import {Checkbox} from 'primereact/checkbox';
 import {Button} from 'primereact/button';
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {ComputePriceOutDTO} from '../../api/micrositeApi.v1';
 import {dayjsToShortDate, formatPrice, mapFromAPIDateTime} from '../../lib/formaters';
 import {useForm} from 'react-hook-form';
@@ -57,6 +57,18 @@ const RegistrationForm: React.FC<ComponentProps> = ({onHide, visible, data, onCo
         },
     });
 
+    useEffect(() => {
+        if (visible) {
+            // @ts-ignore
+            window.gtag("event", "display_registration_form", {
+                resourceId,
+                since: data.since,
+                till: data.till,
+                price: data.totalPrice
+            });
+        }
+    }, [visible]);
+
     const createReservation = (res: FormData) => {
         createResourceReservation(
             {
@@ -105,6 +117,10 @@ const RegistrationForm: React.FC<ComponentProps> = ({onHide, visible, data, onCo
                                 <InputLabel>jméno a příjmení: *</InputLabel>
                                 <InputText
                                     value={formik.values.fullName}
+                                    onBlur={e => {
+                                        // @ts-ignore
+                                        window.gtag("event", "registration_form", formik.values);
+                                    }}
                                     onChange={(e) => formik.setFieldValue('fullName', e.target.value)}
                                 />
                                 {formik.touched.fullName && <Error>{formik.errors.fullName}</Error>}
@@ -113,6 +129,10 @@ const RegistrationForm: React.FC<ComponentProps> = ({onHide, visible, data, onCo
                                 <InputLabel>email: *</InputLabel>
                                 <InputText
                                     value={formik.values.email}
+                                    onBlur={e => {
+                                        // @ts-ignore
+                                        window.gtag("event", "registration_form", formik.values);
+                                    }}
                                     onChange={(e) => formik.setFieldValue('email', e.target.value)}
                                 />
                                 {formik.touched.email && <Error>{formik.errors.email}</Error>}
@@ -121,6 +141,10 @@ const RegistrationForm: React.FC<ComponentProps> = ({onHide, visible, data, onCo
                                 <InputLabel>telefon: *</InputLabel>
                                 <InputText
                                     value={formik.values.phone}
+                                    onBlur={e => {
+                                        // @ts-ignore
+                                        window.gtag("event", "registration_form", formik.values);
+                                    }}
                                     onChange={(e) => formik.setFieldValue('phone', e.target.value)}
                                 />
                                 {formik.touched.phone && <Error>{formik.errors.phone}</Error>}

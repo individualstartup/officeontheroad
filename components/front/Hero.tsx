@@ -40,16 +40,17 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
         form.since.toISOString(),
         form.till.toISOString(),
         (d) => {
+          console.log("kokot")
           // @ts-ignore
-          gtag("event","check_price", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), price: d.totalPrice});
-          setApiResponse(d);
+          //window.gtag("event","check_price", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), price: d.totalPrice});
+          //setApiResponse(d);
         },
         null,
         {
           onValidationFailed: (originalResponse) => {
             console.log(JSON.stringify(originalResponse));
             // @ts-ignore
-            gtag("event","check_price_error", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), error: originalResponse.map((t) => t.message).join(', ')});
+            //window.gtag("event","check_price_error", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), error: originalResponse.map((t) => t.message).join(', ')});
             setValidationError(originalResponse.map((t) => t.message).join(', '));
           },
         },
