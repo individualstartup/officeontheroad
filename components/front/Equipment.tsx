@@ -18,14 +18,14 @@ const EquipmentComponent: React.FC<ComponentProps> = () => {
             <EquipmentSpan>
               Na jízdu
               <br />
-              <EquipmentBold>3+1 míst</EquipmentBold>
+              <EquipmentBold>3 místa *</EquipmentBold>
             </EquipmentSpan>
           </EquipmentParagraph>
           <EquipmentParagraph>
             <EquipmentIcon src="/images/svg/places-sleep.svg" />
             <EquipmentSpan>
               Na spaní
-              <EquipmentBold>3+1 míst</EquipmentBold>
+              <EquipmentBold>3 místa *</EquipmentBold>
             </EquipmentSpan>
           </EquipmentParagraph>
           <EquipmentParagraph>
@@ -86,10 +86,24 @@ const EquipmentComponent: React.FC<ComponentProps> = () => {
           </EquipmentParagraph>
         </EquipmentWrapper>
         <EquipmentListBoxComponent />
+        <Note>* technicky jsou ve voze 4 místa na jízdu i spaní, ale 4. místo je při jízdě zády.</Note>
       </Equipment>
     </ContainerComponent>
   );
 };
+
+const Hr = styled.hr`
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background: #e4e4e4;
+  height: 1px;
+`;
+
+const Note = styled.div`
+  display: flex;
+  margin: 2rem 0;
+`
 
 const EquipmentTitle = styled.h2`
   display: block;
@@ -119,7 +133,7 @@ const EquipmentSpan = styled.span`
 const EquipmentWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto 52px auto;
+  margin: 0 auto 0px auto;
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   width: 100%;

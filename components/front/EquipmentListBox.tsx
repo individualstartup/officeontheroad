@@ -28,9 +28,6 @@ const EquipmentListBoxComponent: React.FC<ComponentProps> = () => {
           <EquipmentListItem>Vyrovnávací klíny</EquipmentListItem>
         </EquipmentUnorderedList>
       </EquipmentWrapper>
-      {/*      <EquipmentFlexWrapper>
-        <EquipmentLink href="">Zobrazit méně</EquipmentLink>
-      </EquipmentFlexWrapper>*/}
     </ContainerComponent>
   );
 };

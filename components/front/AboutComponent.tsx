@@ -6,7 +6,7 @@ import ReservationForm from "./ReservationForm/ReservationForm";
 interface ComponentProps {
 }
 
-const AboutComponent: React.FC<ComponentProps> = () => {
+const   AboutComponent: React.FC<ComponentProps> = () => {
     return (
         <About>
             <ContainerComponent>

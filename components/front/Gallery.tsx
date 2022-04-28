@@ -65,6 +65,22 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4179.jpeg?height=400`} />
               <GalleryImage alt="" src={`${hostPrefix}/images/data/IMG_4264.jpeg?height=400`} />
 
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-3-1024x683.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-5-1024x683.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-6.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-7.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-8.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-9-1024x762.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-10-1024x683.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-11-1024x683.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-12.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-13-1024x683.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-14-1024x677.jpgheight=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-15-1024x683.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-16.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-17-1024x683.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-18-1024x693.jpg?height=400`} />
+              <GalleryImage alt="" src={`${hostPrefix}/images/Camping-car-NOTIN-Malaga-CF-1024x677.jpg?height=400`} />
             </Slider>
           </GalleryImageList>
         </GalleryInner>
