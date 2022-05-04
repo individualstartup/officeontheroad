@@ -17,6 +17,8 @@ const GalleryComponent: React.FC<ComponentProps> = () => {
     slidesToScroll: 1,
     initialSlide: 0,
     lazyLoad: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
     responsive: [
       {
         breakpoint: 1024,
