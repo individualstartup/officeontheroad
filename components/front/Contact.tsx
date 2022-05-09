@@ -22,6 +22,7 @@ const ContactComponent: React.FC<ComponentProps> = () => {
                 Email: <ContactLink href="mailto:info@officeontheroad.cz">info@officeontheroad.cz</ContactLink>
               </ContactInfoParagraph>
               <ContactInfoParagraph>IČ: 08 94 96 71</ContactInfoParagraph>
+              <ContactInfoParagraph>bankovní spojení: 2101995587/2010</ContactInfoParagraph>
             </div>
 
             <ContactlinksUnorderedList>
