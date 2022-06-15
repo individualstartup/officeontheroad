@@ -161,7 +161,7 @@ const ContactSocialListItem = styled.li`
   width: 40px;
   margin-left:20px;
 
-  @media (min-width: 1024px) { 
+  @media (min-width: 1024px) {
     margin-left: 0;
     margin-bottom: 10px;
   }

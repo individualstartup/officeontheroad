@@ -18,14 +18,14 @@ const EquipmentComponent: React.FC<ComponentProps> = () => {
             <EquipmentSpan>
               Na jízdu
               <br />
-              <EquipmentBold>3 místa *</EquipmentBold>
+              <EquipmentBold>4 místa *</EquipmentBold>
             </EquipmentSpan>
           </EquipmentParagraph>
           <EquipmentParagraph>
             <EquipmentIcon src="/images/svg/places-sleep.svg" />
             <EquipmentSpan>
               Na spaní
-              <EquipmentBold>3 místa *</EquipmentBold>
+              <EquipmentBold>4 místa *</EquipmentBold>
             </EquipmentSpan>
           </EquipmentParagraph>
           <EquipmentParagraph>
