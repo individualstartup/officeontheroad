@@ -99,6 +99,16 @@ export interface PensionRoomListPriceOutDTO {
     price: number;
 }
 
+export interface DayInfo {
+    date: string;
+    price: number;
+    occupied: boolean;
+}
+
+export interface DisabledDayDTO {
+    disabledDate: string;
+}
+
 export enum ScopeEnum { FIELD='FIELD',COMPONENT='COMPONENT',GLOBAL='GLOBAL' }
 export enum TypeEnum { INFO='INFO',ERROR='ERROR',VALIDATION='VALIDATION',CONFLICT='CONFLICT',SUCCESS='SUCCESS' }
 export enum ErrorTypeEnum { ERROR='ERROR',VALIDATION='VALIDATION',CONFLICT='CONFLICT' }
@@ -115,6 +125,8 @@ export interface MicrositeApiType {
     computePrice: (resourceId: string,since: string,till: string, onSuccess: ((data : ComputePriceOutDTO)=>void), hashAuthentication?: string, callbacks?: Callbacks) => void;
     loadResourceDetails: (listOfResourceUUUID: string[], onSuccess: ((data : RoomDetailOutDTO[])=>void), hashAuthentication?: string, callbacks?: Callbacks) => void;
     listResourceGroup: (resourceGroupId: string,resourceGroupType: string, onSuccess: ((data : PensionRoomListOutDTO[])=>void), hashAuthentication?: string, callbacks?: Callbacks) => void;
+    getResourceCalendarInfo: (resourceUUID: string,since: string,till: string, onSuccess: ((data : DayInfo[])=>void), hashAuthentication?: string, callbacks?: Callbacks) => void;
+    getDisabledDaysForResourceGroup: (resourceGroup: string,since: string,till: string, onSuccess: ((data : DisabledDayDTO[])=>void), hashAuthentication?: string, callbacks?: Callbacks) => void;
   loading: string[];
 }
 
@@ -444,6 +456,108 @@ getIdTokenClaims: (options?: GetIdTokenClaimsOptions) => Promise<IdToken>,
                     } else
                     handleError(error, {});
                     setLoading(loading.filter(t=>t!== "listResourceGroup"));
+                })
+        
+        },
+        getResourceCalendarInfo: (resourceUUID: string,since: string,till: string, onSuccess: ((data : DayInfo[])=>void), hashAuthentication: string = null, callbacks: Callbacks ={}):void => {
+        const slugs = router.query["slugs"];
+
+            console.log(`Sending get -> ${backendUrl}/public-api/get-calendar-info/${resourceUUID}/${since}/${till}, with data: ${JSON.stringify({})}`);
+            setLoading([...loading, "getResourceCalendarInfo"]);
+            axios
+                .get(`${backendUrl}/public-api/get-calendar-info/${resourceUUID}/${since}/${till}`,  {
+                    headers: {
+                    'Accept-Language': i18n.language,
+        
+                    },
+                    params: resolveQueryParams([]),
+                })
+                .then((response) => {
+                    if (isSuccess(response)) {
+                        // @ts-ignore
+                        onSuccess(response.data.payload);
+                        }
+                    if (hasAdditionalAction(response)) {
+                        if (typeof callbacks.onAdditionalAction === 'function') {
+                            callbacks.onAdditionalAction(response.data.payload);
+                        }
+                    }
+
+                    if (isConflict(response)) {
+                        if (typeof callbacks.onConflict === 'function') {
+                            callbacks.onConflict(response.data.payload.entity);
+                        }
+                    }
+                    if (validationFailed(response)) {
+                        if (typeof callbacks.onValidationFailed === 'function') {
+                         callbacks.onValidationFailed(response.data.messages);
+                        }
+                    }
+
+                    if (entityNotFound(response)) {
+                        if (typeof callbacks.onEntityNotFound === 'function') {
+                            callbacks.onEntityNotFound(response.data.payload);
+                        }
+                    }
+                    setLoading(loading.filter(t=>t!== "getResourceCalendarInfo"));
+                })
+                .catch((error)=>{
+                    if (typeof callbacks.onError === 'function') {
+                        callbacks.onError(error);
+                    } else
+                    handleError(error, {});
+                    setLoading(loading.filter(t=>t!== "getResourceCalendarInfo"));
+                })
+        
+        },
+        getDisabledDaysForResourceGroup: (resourceGroup: string,since: string,till: string, onSuccess: ((data : DisabledDayDTO[])=>void), hashAuthentication: string = null, callbacks: Callbacks ={}):void => {
+        const slugs = router.query["slugs"];
+
+            console.log(`Sending get -> ${backendUrl}/public-api/get-blocked-days/${resourceGroup}/${since}/${till}, with data: ${JSON.stringify({})}`);
+            setLoading([...loading, "getDisabledDaysForResourceGroup"]);
+            axios
+                .get(`${backendUrl}/public-api/get-blocked-days/${resourceGroup}/${since}/${till}`,  {
+                    headers: {
+                    'Accept-Language': i18n.language,
+        
+                    },
+                    params: resolveQueryParams([]),
+                })
+                .then((response) => {
+                    if (isSuccess(response)) {
+                        // @ts-ignore
+                        onSuccess(response.data.payload);
+                        }
+                    if (hasAdditionalAction(response)) {
+                        if (typeof callbacks.onAdditionalAction === 'function') {
+                            callbacks.onAdditionalAction(response.data.payload);
+                        }
+                    }
+
+                    if (isConflict(response)) {
+                        if (typeof callbacks.onConflict === 'function') {
+                            callbacks.onConflict(response.data.payload.entity);
+                        }
+                    }
+                    if (validationFailed(response)) {
+                        if (typeof callbacks.onValidationFailed === 'function') {
+                         callbacks.onValidationFailed(response.data.messages);
+                        }
+                    }
+
+                    if (entityNotFound(response)) {
+                        if (typeof callbacks.onEntityNotFound === 'function') {
+                            callbacks.onEntityNotFound(response.data.payload);
+                        }
+                    }
+                    setLoading(loading.filter(t=>t!== "getDisabledDaysForResourceGroup"));
+                })
+                .catch((error)=>{
+                    if (typeof callbacks.onError === 'function') {
+                        callbacks.onError(error);
+                    } else
+                    handleError(error, {});
+                    setLoading(loading.filter(t=>t!== "getDisabledDaysForResourceGroup"));
                 })
         
         },

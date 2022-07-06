@@ -13,7 +13,6 @@ const CallendarComponent: React.FC<ComponentProps> = () => {
         <h2>
           <b>Kalendář</b>
         </h2>
-        {dumpVars({ calendarOffset })}
         <CallendarInner>
           <ul className="pagination">
             <li>

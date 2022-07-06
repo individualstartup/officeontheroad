@@ -48,7 +48,7 @@ export default function Home() {
           {/*<RentalComponent />*/}
           {/*          <CalendarPrime />*/}
           {/*<CallendarComponent />*/}
-          {/*<CalendarPrime />*/}
+          <CalendarPrime />
           <EquipmentComponent />
           <ConditionComponent />
           <ContactComponent />

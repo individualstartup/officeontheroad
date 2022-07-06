@@ -30,6 +30,9 @@ const NavigationComponent: React.FC<ComponentProps> = ({ open, setOpen }) => {
           <NavigationItem>
             <a href="#podminky">Podmínky</a>
           </NavigationItem>
+          <NavigationItem>
+            <a href="#kalendar">Kalendář</a>
+          </NavigationItem>
           {/*          <NavigationItem>
             <a href="#vice-k-pronajmu">Více k pronájmu</a>
           </NavigationItem>*/}

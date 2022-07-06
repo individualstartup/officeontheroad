@@ -11,6 +11,10 @@ export const formatPrice = (price: number, currency: string) => {
   return `${price?.toLocaleString('cs-CZ', { minimumFractionDigits: 2 }) || '-'} ${currency}`;
 };
 
+export const formatPrice2 = (price: number, currency: string) => {
+  return `${price?.toLocaleString('cs-CZ', { minimumFractionDigits: 0 }) || '-'} ${currency}`;
+};
+
 export const mapFromAPIDateTime = (stringDate: string): Dayjs => {
   if (isNullOrUndefined(stringDate)) return null;
   const date = dayjs(stringDate);
