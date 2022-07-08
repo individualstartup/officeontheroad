@@ -9,7 +9,9 @@ import { addLocale } from 'primereact/api';
 import { ApiContext } from '../../api/api';
 import dayjs from 'dayjs';
 import { dayjsToShortDate, formatPrice, formatPrice2, mapFromAPIDateTime } from '../../lib/formaters';
-import { DayInfo } from '../../api/micrositeApi.v1';
+import { ComputePriceOutDTO, DayInfo } from '../../api/micrositeApi.v1';
+import RegistrationForm from './RegistrationForm';
+import ThanksDialog from './ThanksDialog';
 
 interface ComponentProps {}
 
@@ -39,15 +41,19 @@ addLocale('cs', {
 
 const CalendarPrime: React.FC<ComponentProps> = () => {
   const { width } = useViewport();
-  const [range, setRange] = useState(null);
-  const { getResourceCalendarInfo } = useContext(ApiContext);
+  const [range, setRange] = useState<Date | Date[]>([]);
+  const { getResourceCalendarInfo, computePrice } = useContext(ApiContext);
   const [viewDate, setViewDate] = useState(new Date());
   const [dayInfos, setDayInfos] = useState<DayInfo[]>([]);
   const [disabledDates, setDisabledDates] = useState([]);
+  const resourceId = 'cf7e153d-9f1b-11ec-b75a-960000dc55d4';
+  const [apiResponse, setApiResponse] = useState<ComputePriceOutDTO>();
+  const [visibleOrder, setVisibleOrder] = useState(false);
+  const [visibleThanksDialog, setVisibleThanksDialog] = useState(false);
 
   useEffect(() => {
     getResourceCalendarInfo(
-      'cf7e153d-9f1b-11ec-b75a-960000dc55d4',
+      resourceId,
       dayjs(viewDate).startOf('month').format('YYYY-MM-DD'),
       dayjs(viewDate).endOf('month').format('YYYY-MM-DD'),
       (d) => {
@@ -56,6 +62,15 @@ const CalendarPrime: React.FC<ComponentProps> = () => {
       },
     );
   }, [viewDate]);
+
+  useEffect(() => {
+    if (range[0] && range[1]) {
+      computePrice(resourceId, dayjs(range[0]).format('YYYY-MM-DD'), dayjs(range[1]).format('YYYY-MM-DD'), (d) => {
+        setApiResponse(d);
+        setVisibleOrder(true);
+      });
+    }
+  }, [range]);
 
   return (
     <ContainerComponent id={'kalendar'}>
@@ -68,7 +83,8 @@ const CalendarPrime: React.FC<ComponentProps> = () => {
             selectionMode={'range'}
             selectOtherMonths={true}
             value={range}
-            onSelect={(e) => setRange(e.value)}
+            /*onSelect={(e) => setRange(e.value)}*/
+            onChange={(e) => setRange(e.value)}
             inline={true}
             numberOfMonths={1}
             minDate={new Date()}
@@ -88,6 +104,27 @@ const CalendarPrime: React.FC<ComponentProps> = () => {
             )}
           />
         </CalendarInner>
+        {apiResponse && (
+          <RegistrationForm
+            visible={visibleOrder}
+            data={apiResponse}
+            onHide={() => {
+              setVisibleOrder(false);
+            }}
+            onComplete={() => {
+              setVisibleOrder(false);
+              setVisibleThanksDialog(true);
+            }}
+          />
+        )}
+        <ThanksDialog
+          visible={visibleThanksDialog}
+          onHide={() => {
+            setVisibleThanksDialog(false);
+            /*setForm({ since: null, till: null });*/
+            setApiResponse(null);
+          }}
+        />
       </>
     </ContainerComponent>
   );
