@@ -4,7 +4,7 @@ import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Checkbox } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ComputePriceOutDTO } from '../../api/micrositeApi.v1';
 import { dayjsToShortDate, formatPrice, mapFromAPIDateTime } from '../../lib/formaters';
 import { useForm } from 'react-hook-form';
@@ -35,7 +35,7 @@ const initialValues: FormData = {
 const validationSchema = yup.object().shape({
   fullName: yup.string().required('Vyplňte, prosím, jméno a příjmení'),
   phone: yup.string().required('Vyplňte prosím telefon'),
-  email: yup.string().required('Vyplňte prosím e-mail').email('Vyplňte prosím e-mail'),
+  email: yup.string().required('Vyplňte prosím e-mail') /*.email('Vyplňte prosím e-mail')*/,
   acceptTaC: yup.mixed().test('true', 'Musíte souhlasit s obchodními podmínkami', (value, context) => {
     return value;
   }) /*.required('Musíte souhlasit s obchodními podmínkami'),*/,
@@ -44,6 +44,7 @@ const validationSchema = yup.object().shape({
 const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data, onComplete }) => {
   const { createResourceReservation } = useContext(ApiContext);
   const resourceId = 'cf7e153d-9f1b-11ec-b75a-960000dc55d4';
+  const [readOnly, setReadOnly] = useState(false);
 
   const sinceDayjs = mapFromAPIDateTime(data.since);
   const tillDayjs = mapFromAPIDateTime(data.till);
@@ -53,6 +54,7 @@ const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data, onC
     validationSchema,
     initialValues,
     onSubmit: (values) => {
+      setReadOnly(true);
       createReservation(values);
     },
   });
@@ -170,7 +172,7 @@ const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data, onC
               {formik.touched.acceptTaC && <Error>{formik.errors.acceptTaC}</Error>}
               <CenteredRow>
                 <Price>Cena celkem {formatPrice(data.totalPrice, 'Kč')}</Price>
-                <Button label={'Rezervovat'} type={'submit'}></Button>
+                <Button label={'Rezervovat'} type={'submit'} disabled={readOnly}></Button>
               </CenteredRow>
             </InnerForm>
           </form>
