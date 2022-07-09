@@ -15,10 +15,9 @@ const NewGallery: React.FC<ComponentProps> = () => {
   const images = [
     `${hostPrefix}/images/data/mv01.jpeg`,
     `${hostPrefix}/images/data/mv02.jpeg`,
-    `${hostPrefix}/images/data/mv02.jpeg`,
+    `${hostPrefix}/images/data/mv03.jpeg`,
     `${hostPrefix}/images/data/mv04.jpeg`,
     `${hostPrefix}/images/data/mv05.jpeg`,
-    `${hostPrefix}/images/data/mv06.jpeg`,
     `${hostPrefix}/images/data/schema.png`,
     `${hostPrefix}/images/data/IMG_3980.jpeg`,
     `${hostPrefix}/images/data/IMG_4089.jpeg`,
