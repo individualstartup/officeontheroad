@@ -32,7 +32,6 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
 
   useEffect(() => {
     if (isValid(form)) {
-
       setValidationError(null);
       setApiResponse(null);
       computePrice(
@@ -40,7 +39,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
         form.since.toISOString(),
         form.till.toISOString(),
         (d) => {
-          console.log("kokot")
+          console.log('kokot');
           // @ts-ignore
           //window.gtag("event","check_price", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), price: d.totalPrice});
           //setApiResponse(d);
@@ -67,7 +66,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
     <>
       <ImageAndForm>
         <Hero backgroundImage={backgroundImage}></Hero>
-        <BookingFormInner>
+        {/*<BookingFormInner>
           <Heading>Na běžky, na lyže, nebo do termálů...</Heading>
           <Note>Zarezervujte si termín ještě dnes</Note>
           <BookingForm>
@@ -79,7 +78,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
                       <CalendarIcon src={'/icons/datepicker.svg'}></CalendarIcon>
                       <Label>Odjezd</Label>
                     </LabelWithIcon>
-                    {/* <InputText style={{ width: '100%' }} />*/}
+                     <InputText style={{ width: '100%' }} />
                     <Calendar
                       style={{ minWidth: '110px' }}
                       dateFormat={'dd.mm.yy'}
@@ -92,7 +91,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
                       <CalendarIcon src={'/icons/datepicker.svg'}></CalendarIcon>
                       <Label>Příjezd</Label>
                     </LabelWithIcon>
-                    {/*<InputText style={{ width: '100%' }} />*/}
+                    <InputText style={{ width: '100%' }} />
                     <Calendar
                       style={{ minWidth: '110px' }}
                       dateFormat={'dd.mm.yy'}
@@ -101,11 +100,11 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
                     />
                   </DateTo>
                 </DateForm>
-                {/*               {apiResponse?.totalPrice && (
+                               {apiResponse?.totalPrice && (
                   <PriceNote>
                     {apiResponse.prices.map((t) => `${t.amount} x ${formatPrice(t.price, 'Kc')}`).join(', ')}
                   </PriceNote>
-                )}*/}
+                )}
                 {validationError && <Error>{validationError}</Error>}
               </Col>
               <Col>
@@ -120,7 +119,7 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
               </Col>
             </TwoCols>
           </BookingForm>
-        </BookingFormInner>
+        </BookingFormInner>*/}
         {apiResponse && (
           <RegistrationForm
             visible={visibleOrder}
@@ -262,7 +261,7 @@ const ImageAndForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 const TwoCols = styled.div`
   display: flex;

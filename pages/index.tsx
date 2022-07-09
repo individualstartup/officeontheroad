@@ -13,6 +13,7 @@ import { Calendar } from 'primereact/calendar';
 import CalendarPrime from '../components/front/CalendarPrime';
 import CallendarComponent from '../components/front/Callendar';
 import { useEffect } from 'react';
+import NewGallery from '../components/front/NewGallery';
 
 export default function Home() {
   useEffect(() => {
@@ -41,7 +42,8 @@ export default function Home() {
           <ContainerComponent>
             <Hr />
           </ContainerComponent>
-          <GalleryComponent />
+          {/* <GalleryComponent />*/}
+          <NewGallery />
           <ContainerComponent>
             <Hr />
           </ContainerComponent>

@@ -30,6 +30,7 @@
     "react-dom": "17.0.1",
     "react-hook-form": "^7.15.3",
     "react-icons": "^4.3.1",
+    "react-image-gallery": "^1.2.8",
     "react-slick": "^0.28.1",
     "react-transition-group": "^4.4.1",
     "sass": "^1.45.1",

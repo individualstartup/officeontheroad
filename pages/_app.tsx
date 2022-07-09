@@ -8,6 +8,7 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import '../styles/styles.scss';
+import 'react-image-gallery/styles/scss/image-gallery.scss';
 
 import dayjs from 'dayjs';
 import qs from 'qs';
