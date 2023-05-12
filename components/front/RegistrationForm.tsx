@@ -5,11 +5,12 @@ import { InputText } from 'primereact/inputtext';
 import { Checkbox } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
 import React, { useContext, useEffect, useState } from 'react';
-import { ComputePriceOutDTO } from '../../api/micrositeApi.v1';
 import { dayjsToShortDate, formatPrice, mapFromAPIDateTime } from '../../lib/formaters';
 import { useForm } from 'react-hook-form';
 import { useFormik } from 'formik';
-import { ApiContext } from '../../api/api';
+import { ComputePriceOutDTO } from '../../api';
+import { apiClient } from '../../api/apiClient';
+import dayjs from 'dayjs';
 
 interface ComponentProps {
   visible: boolean;
@@ -42,12 +43,11 @@ const validationSchema = yup.object().shape({
 });
 
 const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data, onComplete }) => {
-  const { createResourceReservation } = useContext(ApiContext);
   const resourceId = 'cf7e153d-9f1b-11ec-b75a-960000dc55d4';
   const [readOnly, setReadOnly] = useState(false);
 
-  const sinceDayjs = mapFromAPIDateTime(data.since);
-  const tillDayjs = mapFromAPIDateTime(data.till);
+  const sinceDayjs = dayjs(data.since);
+  const tillDayjs = dayjs(data.till);
   const days = tillDayjs.diff(sinceDayjs, 'days') + 1;
 
   const formik = useFormik<FormData>({
@@ -72,29 +72,46 @@ const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data, onC
   }, [visible]);
 
   const createReservation = (res: FormData) => {
-    createResourceReservation(
-      {
-        contract: {
-          contractTill: data.till,
-          contractSince: data.since,
-          resources: [{ resourceUUID: resourceId, guestsCount: 1 }],
+    /*createResourceReservation(
+          {
+            contract: {
+              contractTill: data.till,
+              contractSince: data.since,
+              resources: [{ resourceUUID: resourceId, guestsCount: 1 }],
+            },
+            email: res.email,
+            phone: res.phone,
+            fullName: res.fullName,
+            totalPrice: data.totalPrice,
+          },
+          () => {
+            // @ts-ignore
+            /!*        window.gtag('event', 'created_reservation', {
+              resourceId,
+              since: form.since.toISOString(),
+              till: form.till.toISOString(),
+              price: d.totalPrice,
+            });*!/
+            onComplete();
+          });*/
+    apiClient
+      .createResourceReservation({
+        reservationInDTO: {
+          contract: {
+            contractTill: data.till,
+            contractSince: data.since,
+            resources: [{ resourceUUID: resourceId, guestsCount: 1 }],
+          },
+          email: res.email,
+          phone: res.phone,
+          fullName: res.fullName,
+          totalPrice: data.totalPrice,
+          guestWillFillElectronicCheckIn: true,
         },
-        email: res.email,
-        phone: res.phone,
-        fullName: res.fullName,
-        totalPrice: data.totalPrice,
-      },
-      () => {
-        // @ts-ignore
-        /*        window.gtag('event', 'created_reservation', {
-          resourceId,
-          since: form.since.toISOString(),
-          till: form.till.toISOString(),
-          price: d.totalPrice,
-        });*/
+      })
+      .then((d) => {
         onComplete();
-      },
-    );
+      });
   };
 
   return (
@@ -110,14 +127,14 @@ const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data, onC
             <TwoRows>
               <Col>
                 <InputLabel>Datum odjezdu</InputLabel>
-                <Date>{dayjsToShortDate(mapFromAPIDateTime(data.since))}</Date>
+                <Date>{dayjsToShortDate(dayjs(data.since))}</Date>
               </Col>
               <ArrowRow>
                 <Arrow src={'/icons/datepicker-arrow.svg'}></Arrow>
               </ArrowRow>
               <Col>
                 <InputLabel>Datum návratu</InputLabel>
-                <Date>{dayjsToShortDate(mapFromAPIDateTime(data.till))}</Date>
+                <Date>{dayjsToShortDate(dayjs(data.till))}</Date>
               </Col>
             </TwoRows>
             <Note>(jízda na {days} dny)</Note>

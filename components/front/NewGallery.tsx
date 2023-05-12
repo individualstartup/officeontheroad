@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import * as yup from 'yup';
 import styled from 'styled-components';
-import { ApiContext } from 'api/api';
 import ImageGallery from 'react-image-gallery';
 import getConfig from 'next/config';
 import ContainerComponent from './Container';

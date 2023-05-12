@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import HeroInformationBoxComponent from './HeroInformationBox';
 import { Calendar } from 'primereact/calendar';
 import { InputText } from 'primereact/inputtext';
-import { ApiContext } from '../../api/api';
-import { ComputePriceOutDTO, ResponseResult } from '../../api/micrositeApi.v1';
 import { dumpVars } from '../../lib/debug';
 import { isNotNullOrUndefined, isNullOrUndefined } from '../../lib/utils';
 import { Button } from 'primereact/button';
 import RegistrationForm from './RegistrationForm';
 import { formatPrice } from '../../lib/formaters';
 import ThanksDialog from './ThanksDialog';
+import { ComputePriceOutDTO } from '../../api';
+import { apiClient } from '../../api/apiClient';
 
 interface ComponentProps {
   backgroundImage: string;
@@ -22,7 +22,6 @@ interface ReservationRange {
 }
 
 const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
-  const { computePrice } = useContext(ApiContext);
   const [apiResponse, setApiResponse] = useState<ComputePriceOutDTO>();
   const [form, setForm] = useState<ReservationRange>({ since: null, till: null });
   const [validationError, setValidationError] = useState<string>();
@@ -34,26 +33,11 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
     if (isValid(form)) {
       setValidationError(null);
       setApiResponse(null);
-      computePrice(
-        resourceId,
-        form.since.toISOString(),
-        form.till.toISOString(),
-        (d) => {
-          console.log('kokot');
-          // @ts-ignore
-          //window.gtag("event","check_price", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), price: d.totalPrice});
-          //setApiResponse(d);
-        },
-        null,
-        {
-          onValidationFailed: (originalResponse) => {
-            console.log(JSON.stringify(originalResponse));
-            // @ts-ignore
-            //window.gtag("event","check_price_error", {resourceId, since: form.since.toISOString(), till: form.till.toISOString(), error: originalResponse.map((t) => t.message).join(', ')});
-            setValidationError(originalResponse.map((t) => t.message).join(', '));
-          },
-        },
-      );
+      apiClient.computePrice({
+        resourceId: resourceId,
+        since: form.since,
+        till: form.till,
+      });
     }
   }, [form]);
 

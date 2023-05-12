@@ -6,12 +6,12 @@ import { useViewport } from 'use-viewport';
 import { dumpVars } from '../../lib/debug';
 import ContainerComponent from './Container';
 import { addLocale } from 'primereact/api';
-import { ApiContext } from '../../api/api';
 import dayjs from 'dayjs';
 import { dayjsToShortDate, formatPrice, formatPrice2, mapFromAPIDateTime } from '../../lib/formaters';
-import { ComputePriceOutDTO, DayInfo } from '../../api/micrositeApi.v1';
 import RegistrationForm from './RegistrationForm';
 import ThanksDialog from './ThanksDialog';
+import { ComputePriceOutDTO, DayInfo } from '../../api';
+import { apiClient } from '../../api/apiClient';
 
 interface ComponentProps {}
 
@@ -42,7 +42,6 @@ addLocale('cs', {
 const CalendarPrime: React.FC<ComponentProps> = () => {
   const { width } = useViewport();
   const [range, setRange] = useState<Date | Date[]>([]);
-  const { getResourceCalendarInfo, computePrice } = useContext(ApiContext);
   const [viewDate, setViewDate] = useState(new Date());
   const [dayInfos, setDayInfos] = useState<DayInfo[]>([]);
   const [disabledDates, setDisabledDates] = useState([]);
@@ -52,23 +51,38 @@ const CalendarPrime: React.FC<ComponentProps> = () => {
   const [visibleThanksDialog, setVisibleThanksDialog] = useState(false);
 
   useEffect(() => {
-    getResourceCalendarInfo(
-      resourceId,
-      dayjs(viewDate).startOf('month').format('YYYY-MM-DD'),
-      dayjs(viewDate).endOf('month').format('YYYY-MM-DD'),
-      (d) => {
+    apiClient
+      .getResourceCalendarInfo({
+        resourceUUID: resourceId,
+        // @ts-ignore vlachu vlachu vlachu - snaz se aspon trochu
+        since: dayjs(viewDate).startOf('month').format('YYYY-MM-DD'),
+        // @ts-ignore vlachu vlachu vlachu - snaz se aspon trochu
+        till: dayjs(viewDate).endOf('month').format('YYYY-MM-DD'),
+      })
+      .then((d) => {
         setDayInfos(d);
         setDisabledDates(d.filter((t) => t.occupied).map((t) => new Date(t.date)));
-      },
-    );
+      });
   }, [viewDate]);
 
   useEffect(() => {
     if (range[0] && range[1]) {
-      computePrice(resourceId, dayjs(range[0]).format('YYYY-MM-DD'), dayjs(range[1]).format('YYYY-MM-DD'), (d) => {
-        setApiResponse(d);
-        setVisibleOrder(true);
-      });
+      /*      computePrice(resourceId, dayjs(range[0]).format('YYYY-MM-DD'), dayjs(range[1]).format('YYYY-MM-DD'), (d) => {
+              setApiResponse(d);
+              setVisibleOrder(true);
+            });*/
+      apiClient
+        .computePrice({
+          resourceId: resourceId,
+          // @ts-ignore vlachu vlachu vlachu - snaz se aspon trochu
+          since: dayjs(range[0]).toDate(),
+          // @ts-ignore vlachu vlachu vlachu - snaz se aspon trochu
+          till: dayjs(range[1]).toDate(),
+        })
+        .then((d) => {
+          setApiResponse(d);
+          setVisibleOrder(true);
+        });
     }
   }, [range]);
 

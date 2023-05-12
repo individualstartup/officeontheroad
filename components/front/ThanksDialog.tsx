@@ -1,15 +1,7 @@
-import * as yup from 'yup';
 import styled from 'styled-components';
 import { Dialog } from 'primereact/dialog';
-import { InputText } from 'primereact/inputtext';
-import { Checkbox } from 'primereact/checkbox';
 import { Button } from 'primereact/button';
-import React, { useContext } from 'react';
-import { ComputePriceOutDTO } from '../../api/micrositeApi.v1';
-import { dayjsToShortDate, formatPrice, mapFromAPIDateTime } from '../../lib/formaters';
-import { useForm } from 'react-hook-form';
-import { useFormik } from 'formik';
-import { ApiContext } from '../../api/api';
+import React from 'react';
 
 interface ComponentProps {
   visible: boolean;

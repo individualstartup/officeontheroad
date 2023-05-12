@@ -1,38 +1,36 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import * as yup from 'yup';
 import styled from 'styled-components';
-import {ApiContext} from 'api/api';
-import {ComputePriceOutDTO} from "../../../api/micrositeApi.v1";
-import {isNotNullOrUndefined, isNullOrUndefined} from "../../../lib/utils";
-import {Calendar} from "primereact/calendar";
-import {Button} from "primereact/button";
-import {formatPrice} from "../../../lib/formaters";
-import RegistrationForm from "../RegistrationForm";
-import ThanksDialog from "../ThanksDialog";
-import dayjs from "dayjs";
+import { isNotNullOrUndefined, isNullOrUndefined } from '../../../lib/utils';
+import { Calendar } from 'primereact/calendar';
+import { Button } from 'primereact/button';
+import { formatPrice } from '../../../lib/formaters';
+import RegistrationForm from '../RegistrationForm';
+import ThanksDialog from '../ThanksDialog';
+import dayjs from 'dayjs';
+import { ComputePriceOutDTO } from '../../../api';
+import { apiClient } from '../../../api/apiClient';
 
-interface ComponentProps {
-}
+interface ComponentProps {}
 
 interface ReservationRange {
-    since: Date;
-    till: Date;
+  since: Date;
+  till: Date;
 }
 
 const ReservationForm: React.FC<ComponentProps> = () => {
-    const {computePrice} = useContext(ApiContext);
-    const [apiResponse, setApiResponse] = useState<ComputePriceOutDTO>();
-    const [form, setForm] = useState<ReservationRange>({since: null, till: null});
-    const [validationError, setValidationError] = useState<string>();
-    const resourceId = 'cf7e153d-9f1b-11ec-b75a-960000dc55d4';
-    const [visibleOrder, setVisibleOrder] = useState(false);
-    const [visibleThanksDialog, setVisibleThanksDialog] = useState(false);
+  const [apiResponse, setApiResponse] = useState<ComputePriceOutDTO>();
+  const [form, setForm] = useState<ReservationRange>({ since: null, till: null });
+  const [validationError, setValidationError] = useState<string>();
+  const resourceId = 'cf7e153d-9f1b-11ec-b75a-960000dc55d4';
+  const [visibleOrder, setVisibleOrder] = useState(false);
+  const [visibleThanksDialog, setVisibleThanksDialog] = useState(false);
 
-    useEffect(() => {
-        if (isValid(form)) {
-            setValidationError(null);
-            setApiResponse(null);
-            computePrice(
+  useEffect(() => {
+    if (isValid(form)) {
+      setValidationError(null);
+      setApiResponse(null);
+      /*computePrice(
                 resourceId,
                 dayjs(form.since).format(`YYYY-MM-DD`),
                 dayjs(form.till).format(`YYYY-MM-DD`),
@@ -49,97 +47,111 @@ const ReservationForm: React.FC<ComponentProps> = () => {
                         setValidationError(originalResponse.map((t) => t.message).join(', '));
                     },
                 },
-            );
-        }
-    }, [form]);
+            );*/
+      apiClient
+        .computePrice({
+          resourceId: resourceId,
+          since: dayjs(form.since).toDate(),
+          till: dayjs(form.till).toDate(),
+        })
+        .then((d) => {
+          // @ts-ignore
+          window.gtag('event', 'check_price', {
+            resourceId,
+            since: form.since.toISOString(),
+            till: form.till.toISOString(),
+            price: d.totalPrice,
+          });
+          setApiResponse(d);
+        });
+    }
+  }, [form]);
 
-    const isValid = (f: ReservationRange) => {
-        if (isNotNullOrUndefined(f.since) && isNotNullOrUndefined(f.till)) return true;
-        return false;
-    };
+  const isValid = (f: ReservationRange) => {
+    if (isNotNullOrUndefined(f.since) && isNotNullOrUndefined(f.till)) return true;
+    return false;
+  };
 
-    return (
-        <>
-            <BookingFormInner>
-                <Heading>S elektrokoly, nebo bez ...</Heading>
-                <Note>Zarezervujte si termín ještě dnes</Note>
-                <BookingForm>
-                    <TwoCols>
-                        <Col>
-                            <DateForm>
-                                <DateFrom>
-                                    <LabelWithIcon>
-                                        <CalendarIcon src={'/icons/datepicker.svg'}></CalendarIcon>
-                                        <Label>Odjezd</Label>
-                                    </LabelWithIcon>
-                                    {/* <InputText style={{ width: '100%' }} />*/}
-                                    <Calendar
-                                        style={{minWidth: '110px'}}
-                                        dateFormat={'dd.mm.yy'}
-                                        value={form.since}
-                                        onChange={(e) => setForm((f) => ({...f, since: e.target.value as Date}))}
-                                    />
-                                </DateFrom>
-                                <DateTo>
-                                    <LabelWithIcon>
-                                        <CalendarIcon src={'/icons/datepicker.svg'}></CalendarIcon>
-                                        <Label>Příjezd</Label>
-                                    </LabelWithIcon>
-                                    {/*<InputText style={{ width: '100%' }} />*/}
-                                    <Calendar
-                                        style={{minWidth: '110px'}}
-                                        dateFormat={'dd.mm.yy'}
-                                        value={form.till}
-                                        onChange={(e) => setForm((f) => ({...f, till: e.target.value as Date}))}
-                                    />
-                                </DateTo>
-                            </DateForm>
-                            {/*               {apiResponse?.totalPrice && (
+  return (
+    <>
+      <BookingFormInner>
+        <Heading>S elektrokoly, nebo bez ...</Heading>
+        <Note>Zarezervujte si termín ještě dnes</Note>
+        <BookingForm>
+          <TwoCols>
+            <Col>
+              <DateForm>
+                <DateFrom>
+                  <LabelWithIcon>
+                    <CalendarIcon src={'/icons/datepicker.svg'}></CalendarIcon>
+                    <Label>Odjezd</Label>
+                  </LabelWithIcon>
+                  {/* <InputText style={{ width: '100%' }} />*/}
+                  <Calendar
+                    style={{ minWidth: '110px' }}
+                    dateFormat={'dd.mm.yy'}
+                    value={form.since}
+                    onChange={(e) => setForm((f) => ({ ...f, since: e.target.value as Date }))}
+                  />
+                </DateFrom>
+                <DateTo>
+                  <LabelWithIcon>
+                    <CalendarIcon src={'/icons/datepicker.svg'}></CalendarIcon>
+                    <Label>Příjezd</Label>
+                  </LabelWithIcon>
+                  {/*<InputText style={{ width: '100%' }} />*/}
+                  <Calendar
+                    style={{ minWidth: '110px' }}
+                    dateFormat={'dd.mm.yy'}
+                    value={form.till}
+                    onChange={(e) => setForm((f) => ({ ...f, till: e.target.value as Date }))}
+                  />
+                </DateTo>
+              </DateForm>
+              {/*               {apiResponse?.totalPrice && (
                   <PriceNote>
                     {apiResponse.prices.map((t) => `${t.amount} x ${formatPrice(t.price, 'Kc')}`).join(', ')}
                   </PriceNote>
                 )}*/}
-                            {validationError && <Error>{validationError}</Error>}
-                        </Col>
-                        <Col>
-                            <ButtonAndPrice>
-                                <Button
-                                    label={'Rezervovat'}
-                                    disabled={isNullOrUndefined(apiResponse)}
-                                    onClick={(e) => setVisibleOrder(true)}
-                                ></Button>
-                                {apiResponse?.totalPrice &&
-                                    <Price>{formatPrice(apiResponse?.totalPrice, 'Kč')}</Price>}
-                            </ButtonAndPrice>
-                        </Col>
-                    </TwoCols>
-                </BookingForm>
-            </BookingFormInner>
-            {apiResponse && (
-                <RegistrationForm
-                    visible={visibleOrder}
-                    data={apiResponse}
-                    onHide={() => {
-                        setVisibleOrder(false);
-                    }}
-                    onComplete={() => {
-                        setVisibleOrder(false);
-                        setVisibleThanksDialog(true);
-                    }}
-                />
-            )}
-            <ThanksDialog
-                visible={visibleThanksDialog}
-                onHide={() => {
-                    setVisibleThanksDialog(false);
-                    setForm({since: null, till: null});
-                    setApiResponse(null);
-                }}
-            />
-        </>
-    );
-}
-
+              {validationError && <Error>{validationError}</Error>}
+            </Col>
+            <Col>
+              <ButtonAndPrice>
+                <Button
+                  label={'Rezervovat'}
+                  disabled={isNullOrUndefined(apiResponse)}
+                  onClick={(e) => setVisibleOrder(true)}
+                ></Button>
+                {apiResponse?.totalPrice && <Price>{formatPrice(apiResponse?.totalPrice, 'Kč')}</Price>}
+              </ButtonAndPrice>
+            </Col>
+          </TwoCols>
+        </BookingForm>
+      </BookingFormInner>
+      {apiResponse && (
+        <RegistrationForm
+          visible={visibleOrder}
+          data={apiResponse}
+          onHide={() => {
+            setVisibleOrder(false);
+          }}
+          onComplete={() => {
+            setVisibleOrder(false);
+            setVisibleThanksDialog(true);
+          }}
+        />
+      )}
+      <ThanksDialog
+        visible={visibleThanksDialog}
+        onHide={() => {
+          setVisibleThanksDialog(false);
+          setForm({ since: null, till: null });
+          setApiResponse(null);
+        }}
+      />
+    </>
+  );
+};
 
 const Error = styled.div`
   display: flex;

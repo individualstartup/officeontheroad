@@ -15,7 +15,6 @@ import qs from 'qs';
 import axios from 'axios';
 import { ViewportProvider } from 'use-viewport';
 import getConfig from 'next/config';
-import { Provider } from '../api/api';
 
 dayjs.extend(utc);
 dayjs.extend(isSameOrBefore);
@@ -32,11 +31,9 @@ const MyApp = ({ Component, pageProps }) => {
   const { publicRuntimeConfig } = getConfig();
 
   return (
-    <Provider>
-      <ViewportProvider>
-        <Component {...pageProps} />
-      </ViewportProvider>
-    </Provider>
+    <ViewportProvider>
+      <Component {...pageProps} />
+    </ViewportProvider>
   );
 };
 
