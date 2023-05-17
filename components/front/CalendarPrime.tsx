@@ -75,9 +75,9 @@ const CalendarPrime: React.FC<ComponentProps> = () => {
         .computePrice({
           resourceId: resourceId,
           // @ts-ignore vlachu vlachu vlachu - snaz se aspon trochu
-          since: dayjs(range[0]).toDate(),
+          sinceInLocalDate: dayjs(range[0]).format('YYYY-MM-DD'),
           // @ts-ignore vlachu vlachu vlachu - snaz se aspon trochu
-          till: dayjs(range[1]).toDate(),
+          tillInLocalDate: dayjs(range[1]).format('YYYY-MM-DD'),
         })
         .then((d) => {
           setApiResponse(d);
