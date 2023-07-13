@@ -35,8 +35,8 @@ const HeroComponent: React.FC<ComponentProps> = ({ backgroundImage }) => {
       setApiResponse(null);
       apiClient.computePrice({
         resourceId: resourceId,
-        since: form.since,
-        till: form.till,
+        sinceInLocalDate: form.since.toLocaleDateString(),
+        tillInLocalDate: form.till.toLocaleDateString(),
       });
     }
   }, [form]);

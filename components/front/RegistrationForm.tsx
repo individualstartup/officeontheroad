@@ -107,6 +107,7 @@ const RegistrationForm: React.FC<ComponentProps> = ({ onHide, visible, data, onC
           fullName: res.fullName,
           totalPrice: data.totalPrice,
           guestWillFillElectronicCheckIn: true,
+          plannedArrival: '',
         },
       })
       .then((d) => {

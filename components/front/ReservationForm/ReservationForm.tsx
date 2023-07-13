@@ -51,8 +51,8 @@ const ReservationForm: React.FC<ComponentProps> = () => {
       apiClient
         .computePrice({
           resourceId: resourceId,
-          since: dayjs(form.since).toDate(),
-          till: dayjs(form.till).toDate(),
+          sinceInLocalDate: dayjs(form.since).format(`YYYY-MM-DD`),
+          tillInLocalDate: dayjs(form.till).format(`YYYY-MM-DD`),
         })
         .then((d) => {
           // @ts-ignore

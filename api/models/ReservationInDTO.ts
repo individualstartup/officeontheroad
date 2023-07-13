@@ -62,6 +62,12 @@ export interface ReservationInDTO {
      * @memberof ReservationInDTO
      */
     guestWillFillElectronicCheckIn: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReservationInDTO
+     */
+    plannedArrival: string;
 }
 
 /**
@@ -72,6 +78,7 @@ export function instanceOfReservationInDTO(value: object): boolean {
     isInstance = isInstance && "fullName" in value;
     isInstance = isInstance && "contract" in value;
     isInstance = isInstance && "guestWillFillElectronicCheckIn" in value;
+    isInstance = isInstance && "plannedArrival" in value;
 
     return isInstance;
 }
@@ -92,6 +99,7 @@ export function ReservationInDTOFromJSONTyped(json: any, ignoreDiscriminator: bo
         'totalPrice': !exists(json, 'totalPrice') ? undefined : json['totalPrice'],
         'contract': ContractInInDTOFromJSON(json['contract']),
         'guestWillFillElectronicCheckIn': json['guestWillFillElectronicCheckIn'],
+        'plannedArrival': json['plannedArrival'],
     };
 }
 
@@ -110,6 +118,7 @@ export function ReservationInDTOToJSON(value?: ReservationInDTO | null): any {
         'totalPrice': value.totalPrice,
         'contract': ContractInInDTOToJSON(value.contract),
         'guestWillFillElectronicCheckIn': value.guestWillFillElectronicCheckIn,
+        'plannedArrival': value.plannedArrival,
     };
 }
 
